@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #00744b;
+      }
+    </style>
+  </defs>
+  <g id="BG">
+    <rect class="cls-2" width="180" height="180"/>
+  </g>
+  <g id="designs">
+    <path class="cls-1" d="M120.59,34.08h-44.56c-17.79,27.22-33.9,77.2-40.22,100.72h27.34s34.23-34.23,34.23-34.23v34.23h26.23V36.53l-3.02-2.45ZM68.61,117.57c7.75-23.47,21.09-61.32,27.66-71.16h1.11v50.66l-28.77,20.49Z"/>
+  </g>
+</svg>

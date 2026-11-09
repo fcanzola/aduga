@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ADUGA | Kéfir de agua artesanal y naturalmente fermentado</title>
+  <meta name="description" content="Conoce ADUGA, kéfir de agua artesanal con cultivos vivos, bajo en azúcar y de sabor ligero y refrescante. Descubre nuestros packs y dónde encontrarnos.">
+  <meta name="theme-color" content="#00744b">
+
+  <!-- Open Graph / redes -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="ADUGA">
+  <meta property="og:title" content="ADUGA | Kéfir de agua artesanal y naturalmente fermentado">
+  <meta property="og:description" content="Kéfir de agua artesanal, naturalmente fermentado, con cultivos vivos y un sabor ligero, cítrico y refrescante.">
+  <meta property="og:image" content="/assets/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/img/hero-1200.webp" imagesrcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" imagesizes="(min-width: 900px) 48vw, 100vw">
+  <link rel="preload" as="font" type="font/woff" href="assets/fonts/oswald-bold.woff" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face { font-family: "Oswald"; src: url("assets/fonts/oswald-regular.woff") format("woff"); font-weight: 400; font-display: swap; }
+    @font-face { font-family: "Oswald"; src: url("assets/fonts/oswald-medium.woff") format("woff"); font-weight: 500; font-display: swap; }
+    @font-face { font-family: "Oswald"; src: url("assets/fonts/oswald-bold.woff") format("woff"); font-weight: 700; font-display: swap; }
+
+    :root {
+      /* Colores de la guía de marca */
+      --green: #00744b;        /* PANTONE 3415 C */
+      --green-deep: #005a3a;
+      --bright: #00bc70;       /* PANTONE 7480 C */
+      --mint: #ccf2e2;         /* PANTONE 7480 C · 20% */
+      --mint-2: #95e1bf;       /* PANTONE 7478 C */
+      --sand: #eadb9e;         /* PANTONE 4001 CP */
+      --cream: #f9f4e3;        /* 4001 CP · 29% — fondo cálido */
+      --paper: #fffcf3;
+      --blue: #247de3;         /* PANTONE 2727 C — acento */
+      --ink: #0d2a1f;
+
+      --display: "Oswald", "Arial Narrow", sans-serif;
+      --serif: "Instrument Serif", Georgia, serif;
+      --gutter: clamp(16px, 5vw, 72px);
+      --max: 1440px;
+      --nav-h: 68px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 20px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    section[id] { scroll-margin-top: var(--nav-h); }
+    ::selection { background: var(--bright); color: var(--ink); }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+    .skip { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--ink); color: var(--cream); padding: 10px 16px; font-family: var(--display); }
+    .skip:focus { left: 8px; }
+
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ---------- Type ---------- */
+    .display {
+      font-family: var(--display);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: .9;
+      letter-spacing: -.005em;
+    }
+    .h-xl { font-size: clamp(54px, 8.6vw, 150px); }
+    .h-lg { font-size: clamp(46px, 7vw, 116px); }
+    .label {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .lead { font-size: clamp(22px, 2vw, 28px); line-height: 1.3; }
+    .prose p + p { margin-top: .8em; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      --bg: var(--green); --fg: var(--mint); --bd: var(--green);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 28px;
+      background: var(--bg); color: var(--fg);
+      border: 1.5px solid var(--bd); border-radius: 999px;
+      font-family: var(--display); font-weight: 500; font-size: 15px;
+      letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+      cursor: pointer;
+      transition: transform .35s var(--ease), background .25s, color .25s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn .arrow { transition: transform .35s var(--ease); }
+    .btn:hover .arrow { transform: translateX(4px); }
+    .btn--mint { --bg: var(--mint); --fg: var(--green); --bd: var(--mint); }
+    .btn--ghost-mint { --bg: transparent; --fg: var(--mint); --bd: var(--mint); }
+    .btn--ghost-mint:hover { --bg: var(--mint); --fg: var(--green); }
+    .btn--ink { --bg: var(--ink); --fg: var(--bright); --bd: var(--ink); }
+    .btn--ghost { --bg: transparent; --fg: var(--green); --bd: var(--green); }
+    .btn--ghost:hover { --bg: var(--green); --fg: var(--mint); }
+    .btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; transform: none; }
+
+    /* ---------- Icons (SVG de marca como máscara, color = currentColor) ---------- */
+    .icon {
+      display: inline-block; width: 1em; height: 1em; flex: none;
+      background: currentColor;
+      -webkit-mask: var(--src) center / contain no-repeat;
+              mask: var(--src) center / contain no-repeat;
+    }
+    .i-sol { --src: url("assets/icons/sol.svg"); }
+    .i-cultivos { --src: url("assets/icons/cultivos.svg"); }
+    .i-ferm { --src: url("assets/icons/fermentacion.svg"); }
+    .i-lupulo { --src: url("assets/icons/lupulo.svg"); }
+    .i-orn1 { --src: url("assets/icons/orn-1.svg"); }
+    .i-orn2 { --src: url("assets/icons/orn-2.svg"); }
+    .i-flor { --src: url("assets/icons/flor.svg"); }
+    .i-ninkasi { --src: url("assets/icons/ninkasi.svg"); }
+
+    /* ---------- Draft banner ---------- */
+    .draft {
+      position: fixed; left: 50%; bottom: 14px; z-index: 60;
+      transform: translateX(-50%);
+      width: min(680px, calc(100% - 24px));
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 12px 14px 12px 18px;
+      background: var(--ink); color: var(--cream);
+      border-radius: 14px;
+      font-family: var(--display); font-size: 13px; letter-spacing: .04em; line-height: 1.45;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .draft b { color: var(--sand); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+    .draft button { margin-left: auto; background: none; border: 0; color: inherit; font-size: 20px; line-height: 1; cursor: pointer; padding: 0 4px; }
+    .pending { outline: 1.5px dashed var(--blue); outline-offset: 4px; color: var(--blue) !important; }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: var(--nav-h);
+      color: var(--mint);
+      transition: background .35s, color .35s, box-shadow .35s;
+    }
+    .nav.is-solid { background: var(--cream); color: var(--green); box-shadow: 0 1px 0 rgba(0,116,75,.15); }
+    .nav__in { height: 100%; display: flex; align-items: center; gap: 28px; }
+    .nav__logo { display: block; width: 104px; color: inherit; }
+    .nav__logo svg { width: 100%; height: auto; fill: currentColor; display: block; }
+    .nav__links { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 34px); margin-left: auto; list-style: none; }
+    .nav__links a {
+      font-family: var(--display); font-weight: 500; font-size: 14px;
+      letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+      position: relative;
+    }
+    .nav__links a:not(.nav__buy)::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1.5px;
+      background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease);
+    }
+    .nav__links a:not(.nav__buy):hover::after { transform: scaleX(1); }
+    .nav__buy {
+      display: inline-flex; align-items: center; height: 40px; padding: 0 20px;
+      border-radius: 999px; background: var(--mint); color: var(--green);
+      transition: background .3s, color .3s;
+    }
+    .nav.is-solid .nav__buy { background: var(--green); color: var(--mint); }
+    .nav__toggle {
+      display: none; margin-left: auto; width: 44px; height: 44px;
+      background: none; border: 0; color: inherit; cursor: pointer; position: relative;
+    }
+    .nav__toggle span { position: absolute; left: 10px; right: 10px; height: 2px; background: currentColor; transition: transform .35s var(--ease), opacity .2s; }
+    .nav__toggle span:nth-child(1) { top: 16px; }
+    .nav__toggle span:nth-child(2) { top: 26px; }
+    .menu-open .nav__toggle span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+    .menu-open .nav__toggle span:nth-child(2) { transform: translateY(-5px) rotate(-45deg); }
+
+    @media (max-width: 899px) {
+      .nav__toggle { display: block; }
+      .nav__links {
+        position: fixed; inset: 0; z-index: -1;
+        flex-direction: column; align-items: flex-start; justify-content: center; gap: 18px;
+        padding: var(--nav-h) var(--gutter) 40px;
+        background: var(--green); color: var(--mint);
+        opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s;
+      }
+      .nav__links a { font-size: clamp(34px, 10vw, 52px); font-weight: 700; letter-spacing: 0; line-height: 1; }
+      .nav__buy { height: auto; padding: 14px 26px; margin-top: 10px; background: var(--mint) !important; color: var(--green) !important; }
+      .menu-open .nav__links { opacity: 1; visibility: visible; }
+      .menu-open .nav { color: var(--mint); background: transparent; box-shadow: none; }
+      .menu-open { overflow: hidden; }
+    }
+
+    /* ---------- 01 Hero ---------- */
+    .hero { background: var(--green); color: var(--mint); position: relative; overflow: hidden; }
+    .hero__grid { display: grid; grid-template-columns: 1.08fr .92fr; min-height: max(640px, 100svh); }
+    .hero__copy {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: calc(var(--nav-h) + 48px) var(--gutter) clamp(48px, 7vh, 88px);
+      max-width: 860px;
+    }
+    .hero__eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; color: var(--mint-2); }
+    .hero__eyebrow .icon { font-size: 18px; }
+    .hero h1 { color: var(--mint); }
+    .hero h1 em { font-style: normal; color: var(--bright); }
+    .hero__text { margin-top: 28px; max-width: 30ch; }
+    .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+    .hero__media { position: relative; min-height: 100%; }
+    .hero__media::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 160px; background: linear-gradient(rgba(0,58,37,.55), rgba(0,58,37,0)); pointer-events: none; }
+    .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; animation: heroIn 1.6s var(--ease) both; }
+    @keyframes heroIn { from { transform: scale(1.06); opacity: .4; } to { transform: none; opacity: 1; } }
+
+    .badge {
+      position: absolute; left: -64px; bottom: 56px; z-index: 2;
+      width: 128px; height: 128px; border-radius: 50%;
+      background: var(--mint); color: var(--green);
+      display: grid; place-items: center;
+    }
+    .badge svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 22s linear infinite; }
+    .badge text { font-family: var(--display); font-weight: 500; font-size: 10.4px; letter-spacing: .22em; fill: currentColor; text-transform: uppercase; }
+    .badge .icon { font-size: 50px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 899px) {
+      .hero__grid { grid-template-columns: 1fr; min-height: 0; }
+      .hero__copy { padding-top: calc(var(--nav-h) + 40px); padding-bottom: 40px; }
+      .hero__media { aspect-ratio: 4 / 5; }
+      .badge { left: auto; right: 16px; top: -52px; bottom: auto; width: 104px; height: 104px; }
+      .badge text { font-size: 8.6px; }
+      .badge .icon { font-size: 44px; }
+    }
+
+    /* ---------- Etimología ---------- */
+    .etym { background: var(--mint); color: var(--green); border-bottom: 1px solid rgba(0,116,75,.15); }
+    .etym__in { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 8px clamp(18px, 3vw, 48px); padding-top: 22px; padding-bottom: 22px; text-align: center; }
+    .etym__word { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: .02em; }
+    .etym__word i { font-style: normal; color: var(--bright); margin: 0 .12em; }
+    .etym__part { font-size: 21px; }
+    .etym__part b { font-family: var(--display); font-weight: 500; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; margin-right: 6px; }
+    .etym__part em { font-style: italic; }
+    @media (max-width: 599px) { .etym__word { flex-basis: 100%; } .etym__part { font-size: 19px; } .etym__part b { font-size: 13px; } }
+
+    /* ---------- Sections ---------- */
+    .sec { padding: clamp(80px, 11vw, 168px) 0; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .eyebrow::before { content: ""; width: 28px; height: 1.5px; background: currentColor; }
+
+    /* 02 Qué es */
+    .what { color: var(--green); }
+    .what__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 110px); align-items: center; }
+    .what__copy .prose { color: var(--ink); margin-top: 32px; max-width: 34ch; }
+    .traits { list-style: none; display: grid; grid-template-columns: 1fr 1fr; margin-top: 44px; border-top: 1.5px solid var(--green); }
+    .traits li {
+      display: flex; align-items: center; gap: 12px;
+      padding: 18px 8px 18px 0;
+      border-bottom: 1.5px solid var(--green);
+      font-family: var(--display); font-weight: 500; font-size: clamp(16px, 1.4vw, 20px);
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .traits li:nth-child(odd) { border-right: 1.5px solid var(--green); }
+    .traits li:nth-child(even) { padding-left: 18px; }
+    .traits .icon { font-size: 18px; color: var(--bright); transition: transform .6s var(--ease); }
+    .traits li:hover .icon { transform: rotate(90deg); }
+    .what__media { position: relative; }
+    .what__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .what__tag {
+      position: absolute; right: -14px; top: 28px;
+      background: var(--blue); color: var(--paper);
+      padding: 10px 14px; transform: rotate(3deg);
+    }
+    @media (max-width: 899px) {
+      .what__grid { grid-template-columns: 1fr; }
+      .what__media { order: -1; }
+      .what__tag { right: 10px; }
+    }
+
+    /* 03 Proceso */
+    .process { background: var(--green); color: var(--mint); }
+    .process__head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 110px); align-items: start; }
+    .process__intro { max-width: 40ch; }
+    .process__intro p:first-child { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.25; color: var(--paper); }
+    .process__intro p:last-child { font-style: italic; color: var(--mint-2); }
+    .steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 44px); margin-top: clamp(64px, 8vw, 120px); counter-reset: s; }
+    .step { border-top: 1.5px solid var(--mint); padding-top: 22px; }
+    .step__top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .step__n { font-family: var(--display); font-weight: 500; font-size: 14px; letter-spacing: .16em; color: var(--mint-2); }
+    .step .icon { font-size: clamp(72px, 7vw, 100px); color: var(--mint); transition: transform .8s var(--ease), color .3s; }
+    .step:hover .icon { transform: translateY(-6px) rotate(-4deg); color: var(--bright); }
+    .step h3 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 2.8vw, 42px); line-height: .95; text-transform: uppercase; margin-top: 28px; }
+    .step p { margin-top: 14px; max-width: 30ch; color: var(--paper); }
+    @media (max-width: 899px) {
+      .process__head { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* 04 Tienda */
+    .shop__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; color: var(--green); }
+    .shop__head p { max-width: 24ch; }
+    .packs { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); }
+    .pack { background: var(--paper); border: 1.5px solid var(--green); display: flex; flex-direction: column; }
+    .pack__visual {
+      position: relative; background: var(--mint); aspect-ratio: 5 / 3.4; overflow: hidden;
+      display: grid; align-items: center; justify-items: end; padding-right: 7%;
+      border-bottom: 1.5px solid var(--green);
+    }
+    .cans { display: grid; }
+    .cans img { width: 100%; transition: transform .6s var(--ease); }
+    .pack--8 .cans { grid-template-columns: repeat(4, 1fr); width: 52%; gap: 3% 2%; }
+    .pack--12 .cans { grid-template-columns: repeat(6, 1fr); width: 64%; gap: 3% 1.6%; }
+    .pack:hover .cans img { transform: translateY(-6px); }
+    .pack:hover .cans img:nth-child(odd) { transform: translateY(-10px) rotate(-3deg); }
+    .pack__count {
+      position: absolute; left: clamp(14px, 2vw, 26px); bottom: clamp(10px, 1.6vw, 20px);
+      font-family: var(--display); font-weight: 700; font-size: clamp(48px, 6vw, 96px); line-height: .85; color: var(--green);
+    }
+    .pack__count small { display: block; font-size: .2em; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; margin-top: 6px; }
+    .pack__body { padding: clamp(22px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .pack__name { font-family: var(--display); font-weight: 700; font-size: clamp(32px, 3vw, 44px); line-height: 1; text-transform: uppercase; color: var(--green); }
+    .pack__spec { color: var(--green); }
+    .pack__desc { max-width: 32ch; }
+    .pack__foot { margin-top: auto; padding-top: 18px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; border-top: 1px solid rgba(0,116,75,.25); }
+    .pack__price { font-family: var(--display); font-weight: 700; font-size: 34px; color: var(--green); }
+    .pack__note { width: 100%; font-family: var(--display); font-size: 13px; letter-spacing: .04em; color: rgba(13,42,31,.7); }
+    .shop__info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; font-size: 18px; }
+    .shop__info div { display: flex; gap: 12px; align-items: flex-start; }
+    .shop__info .icon { font-size: 20px; color: var(--green); margin-top: 2px; }
+    .shop__info strong { display: block; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
+    .shop__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(0,116,75,.25); }
+    .shop__legal a { font-family: var(--display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+    @media (max-width: 899px) {
+      .packs, .shop__info { grid-template-columns: 1fr; }
+    }
+
+    /* 05 Historia */
+    .about { background: var(--mint); color: var(--green); }
+    .about__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 110px); align-items: center; }
+    .about__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .about__media figcaption { margin-top: 10px; }
+    .about h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 5.6vw, 92px); line-height: .98; letter-spacing: -.01em; }
+    .about h2 em { display: block; font-style: italic; }
+    .about .prose { color: var(--ink); margin-top: 36px; max-width: 38ch; }
+    .about__sign { margin-top: 28px; }
+    @media (max-width: 899px) { .about__grid { grid-template-columns: 1fr; } }
+
+    /* 06 Dónde */
+    .find { color: var(--green); }
+    .find__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 110px); align-items: center; }
+    .find .prose { color: var(--ink); margin-top: 32px; max-width: 34ch; }
+    .find__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+    .find__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .stores { list-style: none; margin-top: 44px; border-top: 1.5px solid var(--green); }
+    .stores li a {
+      display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center;
+      padding: 16px 0; border-bottom: 1.5px solid var(--green); text-decoration: none;
+    }
+    .stores__name { font-family: var(--display); font-weight: 700; font-size: 24px; text-transform: uppercase; }
+    .stores__area { grid-column: 1; color: var(--ink); font-size: 18px; }
+    .stores__go { grid-row: 1 / span 2; grid-column: 2; transition: transform .35s var(--ease); }
+    .stores li a:hover .stores__go { transform: translateX(6px); }
+    @media (max-width: 899px) { .find__grid { grid-template-columns: 1fr; } }
+
+    /* 07 B2B */
+    .b2b { background: var(--bright); color: var(--ink); }
+    .b2b__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 110px); align-items: end; }
+    .b2b .prose { margin-top: 28px; max-width: 36ch; }
+    .b2b__aside { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
+    .b2b__aside .icon { font-size: clamp(160px, 16vw, 240px); color: var(--green); }
+    .form { display: none; margin-top: clamp(40px, 5vw, 64px); }
+    .form.is-open { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; animation: fadeUp .6s var(--ease) both; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field--full { grid-column: 1 / -1; }
+    .field label { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+    .field input, .field textarea {
+      font: inherit; color: var(--ink); background: transparent;
+      border: 0; border-bottom: 1.5px solid var(--ink); border-radius: 0;
+      padding: 8px 0; font-size: 22px;
+    }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--paper); }
+    .form__foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 8px; }
+    .form__foot p { font-size: 16px; max-width: 52ch; }
+    @media (max-width: 899px) {
+      .b2b__grid { grid-template-columns: 1fr; align-items: start; }
+      .b2b__aside .icon { display: none; }
+      .form.is-open { grid-template-columns: 1fr; }
+    }
+
+    /* 08 Footer */
+    .footer { background: var(--green); color: var(--mint); padding: clamp(64px, 8vw, 112px) 0 32px; }
+    .footer__top { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer__brand svg { width: min(300px, 70%); fill: currentColor; display: block; }
+    .footer__brand .icon { font-size: 96px; margin-bottom: 20px; display: block; }
+    .footer h4 { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--mint-2); margin-bottom: 14px; }
+    .footer ul { list-style: none; display: grid; gap: 8px; }
+    .footer ul a { text-decoration: none; font-size: 20px; }
+    .footer ul a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .ornaments { display: flex; justify-content: space-between; gap: 12px; margin: clamp(48px, 6vw, 88px) 0 28px; color: var(--mint-2); opacity: .9; }
+    .ornaments .icon { font-size: clamp(26px, 3.4vw, 44px); }
+    .footer__line { font-style: italic; font-size: clamp(30px, 4.4vw, 64px); line-height: 1; color: var(--paper); }
+    .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(204,242,226,.3); }
+    @media (max-width: 899px) { .footer__top { grid-template-columns: 1fr 1fr; } .footer__brand { grid-column: 1 / -1; } }
+
+    /* ---------- Motion ---------- */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal.is-in { opacity: 1; transform: none; }
+    .reveal[data-d="1"] { transition-delay: .1s; }
+    .reveal[data-d="2"] { transition-delay: .2s; }
+    .reveal[data-d="3"] { transition-delay: .3s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <!-- Wordmark ADUGA (vector original de LOGO_MASTERS) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="wordmark" viewBox="100 374 824 276">
+      <path d="M868.63,401h-6.05l-114.97,36.89-68.83-36.89h-3.16c-67.43,0-66.11,197.54,1.58,197.54l33.19-33.19c0,44.24-32.92,44.77-54.25,44.77h-34.44l-10.65-5.73v-196.29h-50.57l-6.58,5.34v145.06l-5.27,5.27c-8.16,0-15.54-1.84-15.54-15.28v-140.39h-50.57l-6.58,5.34v147.96c.26,23.71,18.18,37.14,45.04,37.14l32.92-32.93v14.49l118.46,64.79h11.44c48.73,0,84.02-20.81,83.75-84.55v-119.05l20.25-7.12,74.26,11.6v38.2l-31.6-17.12h-3.16c-67.43,0-66.11,131.69,1.58,131.69l33.19-33.19v33.19h57.15v-171.73l-50.57-25.81ZM710.38,558.51l-5.52,5.27c-21.07,0-20.55-141.18,2.1-141.18h.79l2.63,1.58v134.34ZM862.04,558.51l-5.53,5.27c-21.07,0-20.55-75.33,2.11-75.33h.78l2.64,1.31v68.75Z"/><path d="M104.8,598.54h59.55s74.57-74.56,74.57-74.56v74.56h57.15v-214.1l-6.58-5.34h-97.07c-38.76,59.31-73.87,168.2-87.62,219.44ZM238.92,516.35l-62.68,44.65c17.89-54.2,49.5-143.64,62.68-158.22v113.57Z"/><path d="M396.02,384.45v33.67l-31.6-17.12h-3.16c-67.43,0-66.11,197.54,1.58,197.54l33.19-33.19v33.19h57.15v-219.44h-50.57l-6.58,5.34ZM396.02,558.51l-5.53,5.27c-21.07,0-20.55-141.18,2.11-141.18h.78l2.64,1.31v134.6Z"/>
+    </symbol>
+  </svg>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <div class="wrap nav__in">
+      <a class="nav__logo" href="#top" aria-label="ADUGA — inicio"><svg viewBox="0 0 824 276" role="img" aria-hidden="true"><use href="#wordmark"/></svg></a>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#aduga">ADUGA</a></li>
+        <li><a href="#proceso">Nuestro proceso</a></li>
+        <li><a href="#donde">Dónde encontrarnos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="nav__buy" href="#comprar">Comprar</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= 01 HERO ================= -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="hero__eyebrow label"><span class="icon i-sol" aria-hidden="true"></span>Kéfir de agua con lúpulo · 330 ml</p>
+          <h1 class="display h-xl" id="hero-title">Una nueva forma de tomar <em>kéfir.</em></h1>
+          <p class="hero__text lead">Kéfir de agua artesanal, naturalmente fermentado, con cultivos vivos y un sabor ligero, cítrico y refrescante.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--mint" href="#comprar">Comprar ADUGA <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost-mint" href="#aduga">Conoce ADUGA</a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <img src="assets/img/hero-1200.webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" sizes="(min-width: 900px) 48vw, 100vw" width="1200" height="1800" alt="Dos latas de ADUGA levantadas hacia el cielo, con dos personas sonriendo debajo." fetchpriority="high">
+          <div class="badge" aria-hidden="true">
+            <svg viewBox="0 0 128 128"><defs><path id="circ" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs><text><textPath href="#circ">Naturalmente fermentado · Cultivos vivos ·</textPath></text></svg>
+            <span class="icon i-ninkasi"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Etimología (de la guía de marca) -->
+    <div class="etym" aria-label="Significado del nombre ADUGA">
+      <div class="wrap etym__in">
+        <span class="etym__word">A<i>·</i>dug<i>·</i>ga</span>
+        <span class="etym__part"><b>A</b><em>bebida</em></span>
+        <span class="etym__part"><b>dug</b><em>buena</em></span>
+        <span class="etym__part"><b>ga</b><em>para ti</em></span>
+      </div>
+    </div>
+
+    <!-- ================= 02 QUÉ ES ================= -->
+    <section class="sec what" id="aduga" aria-labelledby="what-title">
+      <div class="wrap what__grid">
+        <div class="what__copy">
+          <p class="eyebrow label reveal">Qué es ADUGA</p>
+          <h2 class="display h-lg reveal" id="what-title">Naturalmente refrescante.</h2>
+          <div class="prose lead reveal" data-d="1">
+            <p>ADUGA es una bebida de kéfir de agua artesanal, naturalmente fermentada y con cultivos vivos.</p>
+            <p>Ligera, cítrica y con un toque dulce. Hecha con ingredientes naturales para disfrutar de algo rico y refrescante.</p>
+          </div>
+          <ul class="traits reveal" data-d="2">
+            <li><span class="icon i-sol" aria-hidden="true"></span>Cultivos vivos</li>
+            <li><span class="icon i-sol" aria-hidden="true"></span>Vegano</li>
+            <li><span class="icon i-sol" aria-hidden="true"></span>Bajo en azúcar</li>
+            <li><span class="icon i-sol" aria-hidden="true"></span>Naturalmente fermentado</li>
+          </ul>
+        </div>
+        <figure class="what__media reveal" data-d="1">
+          <img src="assets/img/lata-mar-1170.webp" srcset="assets/img/lata-mar-700.webp 700w, assets/img/lata-mar-1170.webp 1170w" sizes="(min-width: 900px) 44vw, 100vw" width="1170" height="1463" loading="lazy" alt="Lata de ADUGA fría, con gotas de condensación, frente al mar.">
+          <span class="what__tag label" aria-hidden="true">Mejor bien fría</span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= 03 PROCESO ================= -->
+    <section class="sec process" id="proceso" aria-labelledby="process-title">
+      <div class="wrap">
+        <div class="process__head">
+          <div>
+            <p class="eyebrow label reveal">Nuestro proceso</p>
+            <h2 class="display h-lg reveal" id="process-title">La magia está en la fermentación.</h2>
+          </div>
+          <div class="process__intro prose reveal" data-d="1">
+            <p>Todo empieza con agua, cultivos vivos de kéfir y un poco de azúcar que alimenta la fermentación.</p>
+            <p>Durante este proceso, los microorganismos transforman los azúcares y dan vida a una bebida naturalmente fermentada.</p>
+            <p>Después, incorporamos infusiones de ingredientes como cáscaras de cítricos, lúpulo y hojas de stevia para conseguir el sabor característico de ADUGA.</p>
+            <p>Un proceso artesanal donde cada ingrediente tiene su razón de ser.</p>
+          </div>
+        </div>
+        <ol class="steps">
+          <li class="step reveal">
+            <div class="step__top"><span class="step__n">01</span><span class="icon i-cultivos" aria-hidden="true"></span></div>
+            <h3>Cultivos vivos</h3>
+            <p>El punto de partida. Los cultivos de kéfir hacen posible la fermentación.</p>
+          </li>
+          <li class="step reveal" data-d="1">
+            <div class="step__top"><span class="step__n">02</span><span class="icon i-ferm" aria-hidden="true"></span></div>
+            <h3>Fermentación natural</h3>
+            <p>Con tiempo y cuidado, los microorganismos transforman los azúcares y desarrollan las características de la bebida.</p>
+          </li>
+          <li class="step reveal" data-d="2">
+            <div class="step__top"><span class="step__n">03</span><span class="icon i-lupulo" aria-hidden="true"></span></div>
+            <h3>Ingredientes naturales</h3>
+            <p>Infusiones de cítricos, lúpulo y hojas de stevia aportan ese sabor ligero y refrescante.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= 04 TIENDA ================= -->
+    <section class="sec shop" id="comprar" aria-labelledby="shop-title">
+      <div class="wrap">
+        <div class="shop__head">
+          <div>
+            <p class="eyebrow label reveal">Tienda</p>
+            <h2 class="display h-lg reveal" id="shop-title">Para compartir. O no.</h2>
+          </div>
+          <p class="lead reveal" data-d="1">Tu dosis de ADUGA, directamente a casa.</p>
+        </div>
+
+        <div class="packs">
+          <article class="pack pack--8 reveal" aria-labelledby="p8-name">
+            <div class="pack__visual" aria-hidden="true">
+              <span class="pack__count">8<small>latas</small></span>
+              <div class="cans" data-cans="8"></div>
+            </div>
+            <div class="pack__body">
+              <h3 class="pack__name" id="p8-name">Pack de 8</h3>
+              <p class="pack__spec label">8 latas de ADUGA · 330 ml cada una.</p>
+              <p class="pack__desc">Perfecto para probar, repetir o tener unas cuantas frías en la nevera.</p>
+              <div class="pack__foot">
+                <span class="pack__price" data-price="pack8">—</span>
+                <a class="btn" data-buy="pack8" href="#comprar" target="_blank" rel="noopener">Comprar pack de 8 <span class="arrow" aria-hidden="true">→</span></a>
+                <p class="pack__note" data-shipping></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pack pack--12 reveal" data-d="1" aria-labelledby="p12-name">
+            <div class="pack__visual" aria-hidden="true">
+              <span class="pack__count">12<small>latas</small></span>
+              <div class="cans" data-cans="12"></div>
+            </div>
+            <div class="pack__body">
+              <h3 class="pack__name" id="p12-name">Pack de 12</h3>
+              <p class="pack__spec label">12 latas de ADUGA · 330 ml cada una.</p>
+              <p class="pack__desc">Para los que ya saben que ocho no van a ser suficientes.</p>
+              <div class="pack__foot">
+                <span class="pack__price" data-price="pack12">—</span>
+                <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener">Comprar pack de 12 <span class="arrow" aria-hidden="true">→</span></a>
+                <p class="pack__note" data-shipping></p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="shop__info reveal">
+          <div><span class="icon i-sol" aria-hidden="true"></span><p><strong>Pago seguro</strong>El pago se hace en la página segura de Stripe.</p></div>
+          <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envíos en España</strong>Consulta destinos, costes y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</p></div>
+          <div><span class="icon i-cultivos" aria-hidden="true"></span><p><strong>Siempre en la nevera</strong>Lleva cultivos vivos: guárdala por debajo de 10 °C.</p></div>
+        </div>
+        <nav class="shop__legal" aria-label="Información de compra">
+          <a href="legal.html#envios">Envíos</a>
+          <a href="legal.html#devoluciones">Devoluciones</a>
+          <a href="legal.html#privacidad">Privacidad</a>
+          <a href="legal.html#aviso-legal">Aviso legal</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ================= 05 HISTORIA ================= -->
+    <section class="sec about" id="historia" aria-labelledby="about-title">
+      <div class="wrap about__grid">
+        <figure class="about__media reveal">
+          <img data-founder-photo src="assets/img/nevera-1080.webp" srcset="assets/img/nevera-700.webp 700w, assets/img/nevera-1080.webp 1080w" sizes="(min-width: 900px) 40vw, 100vw" width="1080" height="1350" loading="lazy" alt="Una mano saca una lata de ADUGA de una nevera llena de latas.">
+        </figure>
+        <div>
+          <p class="eyebrow label reveal">Sobre ADUGA</p>
+          <h2 class="reveal" id="about-title">Queríamos algo rico. <em>Y que además nos hiciera bien.</em></h2>
+          <div class="prose lead reveal" data-d="1">
+            <p>Así empezó ADUGA. Con las ganas de crear una bebida que realmente apeteciera tomar: refrescante, llena de sabor, hecha con buenos ingredientes y sin tener que elegir entre disfrutarla y cuidarse.</p>
+            <p>Después de muchas pruebas, nació nuestra primera versión de ADUGA: un kéfir de agua artesanal, naturalmente fermentado y hecho para disfrutar en cualquier momento.</p>
+          </div>
+          <p class="about__sign label reveal" data-d="2" data-founder-name hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 06 DÓNDE ================= -->
+    <section class="sec find" id="donde" aria-labelledby="find-title">
+      <div class="wrap find__grid">
+        <div>
+          <p class="eyebrow label reveal">Dónde encontrarnos</p>
+          <h2 class="display h-lg reveal" id="find-title">ADUGA por Madrid.</h2>
+          <div class="prose lead reveal" data-d="1">
+            <p>Estamos empezando a llegar a nuevos rincones de Madrid.</p>
+            <p>Descubre dónde puedes encontrarnos o pide tus latas directamente desde aquí.</p>
+          </div>
+          <ul class="stores" id="stores" hidden></ul>
+          <div class="find__ctas reveal" data-d="2">
+            <a class="btn" href="#comprar">Comprar ADUGA <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#contacto">¿Tienes una tienda?</a>
+          </div>
+        </div>
+        <figure class="find__media reveal" data-d="1">
+          <img src="assets/img/gorra-1024.webp" srcset="assets/img/gorra-700.webp 700w, assets/img/gorra-1024.webp 1024w" sizes="(min-width: 900px) 38vw, 100vw" width="1024" height="1536" loading="lazy" alt="Una lata de ADUGA en equilibrio sobre una gorra con el logo de ADUGA.">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= 07 B2B ================= -->
+    <section class="sec b2b" id="contacto" aria-labelledby="b2b-title">
+      <div class="wrap">
+        <div class="b2b__grid">
+          <div>
+            <p class="eyebrow label reveal">Para tiendas, cafeterías y distribuidores</p>
+            <h2 class="display h-lg reveal" id="b2b-title">¿Quieres vender ADUGA?</h2>
+            <div class="prose lead reveal" data-d="1">
+              <p>Estamos buscando tiendas, cafeterías y distribuidores que quieran formar parte de ADUGA.</p>
+              <p>Si crees que nuestra bebida puede encajar en tu espacio, nos encantará conocerte.</p>
+            </div>
+          </div>
+          <div class="b2b__aside reveal" data-d="2">
+            <span class="icon i-ninkasi" aria-hidden="true"></span>
+            <button class="btn btn--ink" id="b2bOpen" aria-expanded="false" aria-controls="b2bForm">Hablemos <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+        </div>
+
+        <form class="form" id="b2bForm" novalidate>
+          <div class="field"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name"></div>
+          <div class="field"><label for="f-empresa">Empresa</label><input id="f-empresa" name="empresa" autocomplete="organization"></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="f-ciudad">Ciudad</label><input id="f-ciudad" name="ciudad" autocomplete="address-level2"></div>
+          <div class="field field--full"><label for="f-mensaje">Mensaje</label><textarea id="f-mensaje" name="mensaje" placeholder="Cuéntanos sobre tu espacio"></textarea></div>
+          <div class="form__foot">
+            <button class="btn btn--ink" type="submit">Enviar <span class="arrow" aria-hidden="true">→</span></button>
+            <p>Al enviar se abrirá tu correo con el mensaje listo. Esta web no guarda tus datos. Más info en nuestra <a href="legal.html#privacidad">política de privacidad</a>.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= 08 FOOTER ================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="icon i-ninkasi" aria-hidden="true"></span>
+          <svg viewBox="0 0 824 276" role="img" aria-label="ADUGA"><use href="#wordmark"/></svg>
+        </div>
+        <div>
+          <h4>Explora</h4>
+          <ul>
+            <li><a href="#comprar">Comprar</a></li>
+            <li><a href="#donde">Puntos de venta</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Síguenos</h4>
+          <ul>
+            <li><a data-instagram href="#" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a data-email href="#">Email</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="legal.html#aviso-legal">Aviso legal</a></li>
+            <li><a href="legal.html#privacidad">Política de privacidad</a></li>
+            <li><a href="legal.html#cookies">Política de cookies</a></li>
+            <li><a href="legal.html#envios">Condiciones de compra y envío</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ornaments" aria-hidden="true">
+        <span class="icon i-orn1"></span><span class="icon i-sol"></span><span class="icon i-orn2"></span><span class="icon i-flor"></span><span class="icon i-lupulo"></span><span class="icon i-orn1"></span><span class="icon i-sol"></span><span class="icon i-orn2"></span>
+      </div>
+      <p class="footer__line">Una nueva forma de tomar kéfir.</p>
+      <div class="footer__bottom label">
+        <span>© <span id="year">2026</span> ADUGA</span>
+        <span>Kéfir de agua con lúpulo</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="draft" id="draft" hidden role="status"></div>
+
+  <script src="config.js"></script>
+  <script>
+  (function () {
+    var C = window.ADUGA || {};
+    var $ = function (s, r) { return (r || document).querySelector(s); };
+    var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+    var missing = [];
+
+    /* ---------- Cans illustration ---------- */
+    $$('[data-cans]').forEach(function (el) {
+      var n = +el.getAttribute('data-cans');
+      for (var i = 0; i < n; i++) {
+        var img = new Image();
+        img.src = 'assets/img/lata-260.webp'; img.srcset = 'assets/img/lata-260.webp 1x, assets/img/lata-520.webp 2x'; img.alt = ''; img.width = 146; img.height = 260; img.loading = 'lazy';
+        el.appendChild(img);
+      }
+    });
+
+    /* ---------- Prices + Stripe ---------- */
+    ['pack8', 'pack12'].forEach(function (key) {
+      var p = (C.packs || {})[key] || {};
+      var priceEl = $('[data-price="' + key + '"]');
+      var btn = $('[data-buy="' + key + '"]');
+      if (p.price) { priceEl.textContent = p.price; }
+      else { priceEl.textContent = 'Precio pendiente'; priceEl.classList.add('pending'); missing.push('precio ' + key.replace('pack', 'pack de ')); }
+      if (p.stripeLink && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(p.stripeLink)) {
+        btn.href = p.stripeLink;
+      } else {
+        btn.removeAttribute('href'); btn.removeAttribute('target');
+        btn.setAttribute('aria-disabled', 'true'); btn.setAttribute('title', 'Enlace de pago pendiente');
+        missing.push('Stripe ' + key.replace('pack', 'pack de '));
+      }
+    });
+
+    $$('[data-shipping]').forEach(function (el) {
+      if (C.shipping) { el.textContent = C.shipping; }
+      else { el.textContent = 'Gastos y condiciones de envío: pendiente de confirmar.'; el.classList.add('pending'); }
+    });
+    if (!C.shipping) missing.push('envío');
+
+    /* ---------- Contact ---------- */
+    var ig = $('[data-instagram]');
+    if (C.instagram) ig.href = C.instagram; else ig.parentNode.hidden = true;
+    var em = $('[data-email]');
+    if (C.email) { em.href = 'mailto:' + C.email; em.textContent = C.email; }
+    else { em.textContent = 'Email pendiente'; em.removeAttribute('href'); em.classList.add('pending'); missing.push('email'); }
+
+    /* ---------- Locations ---------- */
+    var locs = (C.locations || []).filter(function (l) { return l && l.name; });
+    if (locs.length) {
+      var ul = $('#stores');
+      locs.forEach(function (l) {
+        var li = document.createElement('li');
+        var a = document.createElement(l.mapsUrl ? 'a' : 'div');
+        if (l.mapsUrl) { a.href = l.mapsUrl; a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('aria-label', l.name + ' — abrir en Google Maps'); }
+        var n = document.createElement('span'); n.className = 'stores__name'; n.textContent = l.name;
+        var ar = document.createElement('span'); ar.className = 'stores__area'; ar.textContent = l.area || '';
+        var go = document.createElement('span'); go.className = 'stores__go label'; go.textContent = l.mapsUrl ? 'Mapa →' : '';
+        a.appendChild(n); a.appendChild(ar); a.appendChild(go); li.appendChild(a); ul.appendChild(li);
+      });
+      ul.hidden = false;
+    } else { missing.push('puntos de venta'); }
+
+    /* ---------- Founder ---------- */
+    var f = C.founder || {};
+    if (f.photo) { var fp = $('[data-founder-photo]'); fp.removeAttribute('srcset'); fp.src = f.photo; fp.alt = f.name ? 'Foto de ' + f.name : 'Detrás de ADUGA'; }
+    if (f.name) { var fn = $('[data-founder-name]'); fn.textContent = '— ' + f.name; fn.hidden = false; }
+    if (!f.photo) missing.push('foto fundador/a');
+
+    /* ---------- Draft banner ---------- */
+    if (C.showDraftBanner && missing.length) {
+      var d = $('#draft');
+      d.innerHTML = '<div><b>Borrador</b> · Falta: ' + missing.join(', ') + '. Se edita en <code>config.js</code>.</div><button type="button" aria-label="Cerrar aviso">×</button>';
+      d.hidden = false;
+      $('button', d).addEventListener('click', function () { d.hidden = true; });
+    }
+
+    /* ---------- Nav ---------- */
+    var nav = $('#nav'), hero = $('#hero');
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { nav.classList.toggle('is-solid', !e[0].isIntersecting); }, { rootMargin: '-68px 0px 0px 0px' }).observe(hero);
+    }
+    var toggle = $('#navToggle');
+    function setMenu(open) {
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    }
+    toggle.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
+    $$('#navLinks a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+    /* ---------- Reveal ---------- */
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+      }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+      $$('.reveal').forEach(function (el) { io.observe(el); });
+    } else { $$('.reveal').forEach(function (el) { el.classList.add('is-in'); }); }
+
+    /* ---------- B2B form → email ---------- */
+    var form = $('#b2bForm'), open = $('#b2bOpen');
+    open.addEventListener('click', function () {
+      var isOpen = form.classList.toggle('is-open');
+      open.setAttribute('aria-expanded', isOpen);
+      if (isOpen) $('#f-nombre').focus();
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = function (n) { return (form.elements[n].value || '').trim(); };
+      var subject = 'Quiero vender ADUGA' + (v('empresa') ? ' — ' + v('empresa') : '');
+      var body = [
+        'Nombre: ' + v('nombre'), 'Empresa: ' + v('empresa'),
+        'Email: ' + v('email'), 'Ciudad: ' + v('ciudad'), '', v('mensaje')
+      ].join('\n');
+      window.location.href = 'mailto:' + (C.email || '') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+
+    $('#year').textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
