@@ -28,7 +28,7 @@ window.ADUGA = {
   shipping: null,
 
   /* ---------- Contacto ---------- */
-  email: null,                                   // ej. "hola@aduga.es"
+  email: "federica@aduga.co",
   instagram: "https://www.instagram.com/drinkaduga/", // handle tomado de las piezas de marca (@drinkaduga) — verifícalo
 
   /* ---------- Puntos de venta en Madrid ----------
