@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/img/hero-1200.webp" imagesrcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" imagesizes="(min-width: 900px) 48vw, 100vw">
+  <link rel="preload" as="image" href="assets/img/lata-mar-1170.webp" imagesrcset="assets/img/lata-mar-700.webp 700w, assets/img/lata-mar-1170.webp 1170w" imagesizes="(min-width: 900px) 48vw, 100vw">
   <link rel="preload" as="font" type="font/woff" href="assets/fonts/oswald-bold.woff" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,7 +220,7 @@
     .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
     .hero__media { position: relative; min-height: 100%; }
     .hero__media::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 160px; background: linear-gradient(rgba(0,58,37,.55), rgba(0,58,37,0)); pointer-events: none; }
-    .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; animation: heroIn 1.6s var(--ease) both; }
+    .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; animation: heroIn 1.6s var(--ease) both; }
     @keyframes heroIn { from { transform: scale(1.06); opacity: .4; } to { transform: none; opacity: 1; } }
 
     .badge {
@@ -256,7 +256,6 @@
     /* ---------- Sections ---------- */
     .sec { padding: clamp(80px, 11vw, 168px) 0; }
     .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-    .eyebrow::before { content: ""; width: 28px; height: 1.5px; background: currentColor; }
 
     /* 02 Qué es */
     .what { color: var(--green); }
@@ -326,6 +325,7 @@
       position: absolute; left: clamp(14px, 2vw, 26px); bottom: clamp(10px, 1.6vw, 20px);
       font-family: var(--display); font-weight: 700; font-size: clamp(48px, 6vw, 96px); line-height: .85; color: var(--green);
     }
+    .pack__count { text-align: center; }
     .pack__count small { display: block; font-size: .2em; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; margin-top: 6px; }
     .pack__body { padding: clamp(22px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 14px; flex: 1; }
     .pack__name { font-family: var(--display); font-weight: 700; font-size: clamp(32px, 3vw, 44px); line-height: 1; text-transform: uppercase; color: var(--green); }
@@ -354,7 +354,7 @@
     .about__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
     .about__media figcaption { margin-top: 10px; }
     .about h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 5.6vw, 92px); line-height: .98; letter-spacing: -.01em; }
-    .about h2 em { display: block; font-style: italic; }
+    .about h2 em { display: block; font-style: normal; }
     .about .prose { color: var(--ink); margin-top: 36px; max-width: 38ch; }
     .about__sign { margin-top: 28px; }
     @media (max-width: 899px) { .about__grid { grid-template-columns: 1fr; } }
@@ -378,9 +378,11 @@
 
     /* 07 B2B */
     .b2b { background: var(--bright); color: var(--ink); }
-    .b2b__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 110px); align-items: end; }
+    .b2b__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 110px); align-items: center; }
     .b2b .prose { margin-top: 28px; max-width: 36ch; }
-    .b2b__aside { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
+    .b2b__aside { display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
+    .b2b__wa { font-family: var(--display); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
+    .b2b__wa:hover { color: var(--paper); }
     .b2b__aside .icon { font-size: clamp(160px, 16vw, 240px); color: var(--green); }
     .form { display: none; margin-top: clamp(40px, 5vw, 64px); }
     .form.is-open { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; animation: fadeUp .6s var(--ease) both; }
@@ -398,6 +400,7 @@
     .form__foot p { font-size: 16px; max-width: 52ch; }
     @media (max-width: 899px) {
       .b2b__grid { grid-template-columns: 1fr; align-items: start; }
+      .b2b__aside { align-items: flex-start; text-align: left; }
       .b2b__aside .icon { display: none; }
       .form.is-open { grid-template-columns: 1fr; }
     }
@@ -471,7 +474,7 @@
           </div>
         </div>
         <div class="hero__media">
-          <img src="assets/img/hero-1200.webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" sizes="(min-width: 900px) 48vw, 100vw" width="1200" height="1800" alt="Dos latas de ADUGA levantadas hacia el cielo, con dos personas sonriendo debajo." fetchpriority="high">
+          <img src="assets/img/lata-mar-1170.webp" srcset="assets/img/lata-mar-700.webp 700w, assets/img/lata-mar-1170.webp 1170w" sizes="(min-width: 900px) 48vw, 100vw" width="1170" height="1463" alt="Lata de ADUGA fría, con gotas de condensación, sostenida frente al mar." fetchpriority="high">
           <div class="badge" aria-hidden="true">
             <svg viewBox="0 0 128 128"><defs><path id="circ" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs><text><textPath href="#circ">Naturalmente fermentado · Cultivos vivos ·</textPath></text></svg>
             <span class="icon i-ninkasi"></span>
@@ -508,7 +511,7 @@
           </ul>
         </div>
         <figure class="what__media reveal" data-d="1">
-          <img src="assets/img/lata-mar-1170.webp" srcset="assets/img/lata-mar-700.webp 700w, assets/img/lata-mar-1170.webp 1170w" sizes="(min-width: 900px) 44vw, 100vw" width="1170" height="1463" loading="lazy" alt="Lata de ADUGA fría, con gotas de condensación, frente al mar.">
+          <img src="assets/img/mesa-1100.webp" srcset="assets/img/mesa-700.webp 700w, assets/img/mesa-1100.webp 1100w" sizes="(min-width: 900px) 44vw, 100vw" width="1100" height="1467" loading="lazy" alt="Dos latas de ADUGA sobre una mesa auxiliar, junto a un vaso de cristal verde.">
           <span class="what__tag label" aria-hidden="true">Mejor bien fría</span>
         </figure>
       </div>
@@ -599,7 +602,7 @@
         <div class="shop__info reveal">
           <div><span class="icon i-sol" aria-hidden="true"></span><p><strong>Pago seguro</strong>El pago se hace en la página segura de Stripe.</p></div>
           <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envío gratis</strong><span data-delivery>Consulta destinos y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</span></p></div>
-          <div><span class="icon i-cultivos" aria-hidden="true"></span><p><strong>Siempre en la nevera</strong>Lleva cultivos vivos: guárdala por debajo de 10 °C.</p></div>
+          <div><span class="icon i-cultivos" aria-hidden="true"></span><p><strong>Recomendable en la nevera</strong>Lleva cultivos vivos: te recomendamos guardarla por debajo de 10 °C.</p></div>
         </div>
         <nav class="shop__legal" aria-label="Información de compra">
           <a href="legal.html#envios">Envíos</a>
@@ -614,7 +617,7 @@
     <section class="sec about" id="historia" aria-labelledby="about-title">
       <div class="wrap about__grid">
         <figure class="about__media reveal">
-          <img data-founder-photo src="assets/img/nevera-1080.webp" srcset="assets/img/nevera-700.webp 700w, assets/img/nevera-1080.webp 1080w" sizes="(min-width: 900px) 40vw, 100vw" width="1080" height="1350" loading="lazy" alt="Una mano saca una lata de ADUGA de una nevera llena de latas.">
+          <img data-founder-photo src="assets/img/cocina-1100.webp" srcset="assets/img/cocina-700.webp 700w, assets/img/cocina-1100.webp 1100w" sizes="(min-width: 900px) 40vw, 100vw" width="1100" height="1467" loading="lazy" alt="Una chica ríe sentada en la encimera de una cocina, con una lata de ADUGA en la mano.">
         </figure>
         <div>
           <p class="eyebrow label reveal">Sobre ADUGA</p>
@@ -665,6 +668,7 @@
           <div class="b2b__aside reveal" data-d="2">
             <span class="icon i-ninkasi" aria-hidden="true"></span>
             <button class="btn btn--ink" id="b2bOpen" aria-expanded="false" aria-controls="b2bForm">Hablemos <span class="arrow" aria-hidden="true">→</span></button>
+            <a class="b2b__wa" data-whatsapp hidden href="#" target="_blank" rel="noopener">O escríbenos por WhatsApp</a>
           </div>
         </div>
 
@@ -703,6 +707,8 @@
           <h4>Síguenos</h4>
           <ul>
             <li><a data-instagram href="#" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a data-tiktok href="#" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a data-email href="#">Email</a></li>
           </ul>
         </div>
@@ -780,6 +786,13 @@
     /* ---------- Contact ---------- */
     var ig = $('[data-instagram]');
     if (C.instagram) ig.href = C.instagram; else ig.parentNode.hidden = true;
+    var tt = $('[data-tiktok]');
+    if (C.tiktok) tt.href = C.tiktok;
+    else { tt.textContent = 'TikTok pendiente'; tt.removeAttribute('href'); tt.removeAttribute('target'); tt.classList.add('pending'); missing.push('enlace de TikTok'); }
+    var wa = (C.whatsapp || '').replace(/[^\d]/g, '');
+    $$('[data-whatsapp]').forEach(function (a) {
+      if (wa) { a.href = 'https://wa.me/' + wa; a.hidden = false; } else { a.parentNode.tagName === 'LI' ? (a.parentNode.hidden = true) : (a.hidden = true); }
+    });
     var em = $('[data-email]');
     if (C.email) { em.href = 'mailto:' + C.email; em.textContent = C.email; }
     else { em.textContent = 'Email pendiente'; em.removeAttribute('href'); em.classList.add('pending'); missing.push('email'); }
@@ -804,7 +817,6 @@
     var f = C.founder || {};
     if (f.photo) { var fp = $('[data-founder-photo]'); fp.removeAttribute('srcset'); fp.src = f.photo; fp.alt = f.name ? 'Foto de ' + f.name : 'Detrás de ADUGA'; }
     if (f.name) { var fn = $('[data-founder-name]'); fn.textContent = '— ' + f.name; fn.hidden = false; }
-    if (!f.photo) missing.push('foto fundador/a');
 
     /* ---------- Draft banner ---------- */
     if (C.showDraftBanner && missing.length) {
