@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/img/lata-mar-1170.webp" imagesrcset="assets/img/lata-mar-700.webp 700w, assets/img/lata-mar-1170.webp 1170w" imagesizes="(min-width: 900px) 48vw, 100vw">
+  <link rel="preload" as="image" href="assets/img/hero-1200.webp" imagesrcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" imagesizes="(min-width: 900px) 48vw, 100vw">
   <link rel="preload" as="font" type="font/woff" href="assets/fonts/oswald-bold.woff" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -220,7 +220,7 @@
     .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
     .hero__media { position: relative; min-height: 100%; }
     .hero__media::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 160px; background: linear-gradient(rgba(0,58,37,.55), rgba(0,58,37,0)); pointer-events: none; }
-    .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; animation: heroIn 1.6s var(--ease) both; }
+    .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; animation: heroIn 1.6s var(--ease) both; }
     @keyframes heroIn { from { transform: scale(1.06); opacity: .4; } to { transform: none; opacity: 1; } }
 
     .badge {
@@ -474,7 +474,7 @@
           </div>
         </div>
         <div class="hero__media">
-          <img src="assets/img/lata-mar-1170.webp" srcset="assets/img/lata-mar-700.webp 700w, assets/img/lata-mar-1170.webp 1170w" sizes="(min-width: 900px) 48vw, 100vw" width="1170" height="1463" alt="Lata de ADUGA fría, con gotas de condensación, sostenida frente al mar." fetchpriority="high">
+          <img src="assets/img/hero-1200.webp" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w" sizes="(min-width: 900px) 48vw, 100vw" width="1200" height="1800" alt="Dos latas de ADUGA levantadas hacia el cielo, con dos personas sonriendo debajo." fetchpriority="high">
           <div class="badge" aria-hidden="true">
             <svg viewBox="0 0 128 128"><defs><path id="circ" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs><text><textPath href="#circ">Naturalmente fermentado · Cultivos vivos ·</textPath></text></svg>
             <span class="icon i-ninkasi"></span>
@@ -735,7 +735,7 @@
 
   <div class="draft" id="draft" hidden role="status"></div>
 
-  <script src="config.js?v=20261110b"></script>
+  <script src="config.js?v=20261110c"></script>
   <script>
   (function () {
     var C = window.ADUGA || {};

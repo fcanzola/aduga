@@ -37,7 +37,7 @@ window.ADUGA = {
   /* ---------- Contacto ---------- */
   email: "federica@aduga.co",
   instagram: "https://www.instagram.com/drinkaduga/", // handle tomado de las piezas de marca (@drinkaduga) — verifícalo
-  tiktok: null,                                       // ej. "https://www.tiktok.com/@drinkaduga"
+  tiktok: "https://www.tiktok.com/@drinkaduga",
   whatsapp: "+34650528538",                           // se enlaza como https://wa.me/34650528538
 
   /* ---------- Puntos de venta en Madrid ----------
