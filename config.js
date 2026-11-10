@@ -12,6 +12,11 @@
 window.ADUGA = {
 
   /* ---------- Tienda ---------- */
+  /* false = tienda cerrada: se muestra "Estamos preparando la tienda online"
+     y se ocultan los packs y los botones de compra.
+     true  = tienda abierta con los packs y los enlaces de Stripe de abajo. */
+  shopOpen: false,
+
   packs: {
     /* Dos formatos online: 12 y 24 latas, cada uno en una sola caja.
        Precios con IVA incluido (ver doc "Pricing" del proyecto).

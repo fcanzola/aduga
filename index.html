@@ -344,10 +344,19 @@
     .shop__info div { display: flex; gap: 12px; align-items: flex-start; }
     .shop__info .icon { font-size: 20px; color: var(--green); margin-top: 2px; }
     .shop__info strong { display: block; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
+    .soon { display: grid; grid-template-columns: 1fr 1.1fr; margin-top: clamp(40px, 5vw, 72px); border: 1.5px solid var(--green); background: var(--paper); }
+    .soon__visual { position: relative; background: var(--mint); border-right: 1.5px solid var(--green); display: grid; place-items: center; padding: clamp(28px, 4vw, 56px); min-height: 380px; }
+    .soon__visual .cans { width: 62%; grid-template-columns: repeat(4, 1fr); gap: 3% 2.4%; }
+    .soon__tag { position: absolute; left: 18px; top: 18px; background: var(--blue); color: var(--paper); padding: 8px 12px; transform: rotate(-3deg); }
+    .soon__body { padding: clamp(28px, 4vw, 64px); display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+    .soon__title { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 3.6vw, 56px); line-height: .95; text-transform: uppercase; color: var(--green); }
+    .soon__text { max-width: 36ch; }
+    .soon__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
     .shop__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(0,116,75,.25); }
     .shop__legal a { font-family: var(--display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
     @media (max-width: 899px) {
-      .packs, .shop__info { grid-template-columns: 1fr; }
+      .packs, .shop__info, .soon { grid-template-columns: 1fr; }
+      .soon__visual { border-right: 0; border-bottom: 1.5px solid var(--green); min-height: 0; }
     }
 
     /* 05 Historia */
@@ -455,7 +464,7 @@
         <li><a href="#proceso">Nuestro proceso</a></li>
         <li><a href="#donde">Dónde encontrarnos</a></li>
         <li><a href="#contacto">Contacto</a></li>
-        <li><a class="nav__buy" href="#comprar">Comprar</a></li>
+        <li><a class="nav__buy" href="#comprar" data-shop-label="Comprar|Tienda">Tienda</a></li>
       </ul>
     </div>
   </header>
@@ -470,8 +479,10 @@
           <h1 class="display h-xl" id="hero-title">Una nueva forma de tomar <em>kéfir.</em></h1>
           <p class="hero__text lead">Kéfir de agua artesanal, naturalmente fermentado, con cultivos vivos y un sabor ligero, cítrico y refrescante.</p>
           <div class="hero__ctas">
-            <a class="btn btn--mint" href="#comprar">Comprar ADUGA <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost-mint" href="#aduga">Conoce ADUGA</a>
+            <a class="btn btn--mint" href="#comprar" data-shop-open hidden>Comprar ADUGA <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost-mint" href="#aduga" data-shop-open hidden>Conoce ADUGA</a>
+            <a class="btn btn--mint" href="#aduga" data-shop-closed>Conoce ADUGA <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost-mint" href="#donde" data-shop-closed>Dónde encontrarnos</a>
           </div>
         </div>
         <div class="hero__media">
@@ -561,9 +572,26 @@
             <p class="eyebrow label reveal">Tienda</p>
             <h2 class="display h-lg reveal" id="shop-title">Para compartir. O no.</h2>
           </div>
-          <p class="lead reveal" data-d="1">Tu dosis de ADUGA, directamente a casa.</p>
+          <p class="lead reveal" data-d="1"><span data-shop-open hidden>Tu dosis de ADUGA, directamente a casa.</span><span data-shop-closed>Muy pronto, ADUGA directamente a casa.</span></p>
         </div>
 
+        <div class="soon reveal" data-shop-closed>
+          <div class="soon__visual" aria-hidden="true">
+            <span class="soon__tag label">Muy pronto</span>
+            <div class="cans" data-cans="12"></div>
+          </div>
+          <div class="soon__body">
+            <p class="eyebrow label">Tienda online</p>
+            <h3 class="soon__title">Estamos preparando la tienda online.</h3>
+            <p class="soon__text lead">Muy pronto podrás pedir tus latas de ADUGA y recibirlas en casa. Mientras tanto, encuéntranos por Madrid o escríbenos y te avisamos en cuanto abramos.</p>
+            <div class="soon__ctas">
+              <a class="btn" data-notify href="#contacto" target="_blank" rel="noopener">Avísame <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn btn--ghost" href="#donde">Dónde encontrarnos</a>
+            </div>
+          </div>
+        </div>
+
+        <div data-shop-open hidden>
         <div class="packs">
           <article class="pack pack--12 reveal" aria-labelledby="p12-name">
             <div class="pack__visual" aria-hidden="true">
@@ -611,6 +639,7 @@
           <a href="legal.html#privacidad">Privacidad</a>
           <a href="legal.html#aviso-legal">Aviso legal</a>
         </nav>
+        </div>
       </div>
     </section>
 
@@ -640,12 +669,12 @@
           <h2 class="display h-lg reveal" id="find-title">ADUGA por Madrid.</h2>
           <div class="prose lead reveal" data-d="1">
             <p>Estamos empezando a llegar a nuevos rincones de Madrid.</p>
-            <p>Descubre dónde puedes encontrarnos o pide tus latas directamente desde aquí.</p>
+            <p><span data-shop-open hidden>Descubre dónde puedes encontrarnos o pide tus latas directamente desde aquí.</span><span data-shop-closed>Descubre dónde puedes encontrarnos. Muy pronto, también online.</span></p>
           </div>
           <ul class="stores" id="stores" hidden></ul>
           <div class="find__ctas reveal" data-d="2">
-            <a class="btn" href="#comprar">Comprar ADUGA <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost" href="#contacto">¿Tienes una tienda?</a>
+            <a class="btn" href="#comprar" data-shop-open hidden>Comprar ADUGA <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn" href="#contacto">¿Tienes una tienda?</a>
           </div>
         </div>
         <figure class="find__media reveal" data-d="1">
@@ -698,7 +727,7 @@
         <div>
           <h4>Explora</h4>
           <ul>
-            <li><a href="#comprar">Comprar</a></li>
+            <li><a href="#comprar" data-shop-label="Comprar|Tienda (muy pronto)">Tienda (muy pronto)</a></li>
             <li><a href="#donde">Puntos de venta</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
@@ -735,7 +764,7 @@
 
   <div class="draft" id="draft" hidden role="status"></div>
 
-  <script src="config.js?v=20261110c"></script>
+  <script src="config.js?v=20261110d"></script>
   <script>
   (function () {
     var C = window.ADUGA || {};
@@ -753,8 +782,20 @@
       }
     });
 
+    /* ---------- Tienda abierta / cerrada ---------- */
+    var shopOpen = C.shopOpen === true;
+    $$('[data-shop-open]').forEach(function (el) { el.hidden = !shopOpen; });
+    $$('[data-shop-closed]').forEach(function (el) { el.hidden = shopOpen; });
+    $$('[data-shop-label]').forEach(function (el) { var l = el.getAttribute('data-shop-label').split('|'); el.textContent = shopOpen ? l[0] : l[1]; });
+    var notify = $('[data-notify]');
+    if (notify) {
+      var waN = (C.whatsapp || '').replace(/[^\d]/g, '');
+      if (waN) notify.href = 'https://wa.me/' + waN + '?text=' + encodeURIComponent('¡Hola! Avisadme cuando abra la tienda online de ADUGA 🙌');
+      else if (C.email) { notify.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Avisadme cuando abra la tienda online'); notify.removeAttribute('target'); }
+    }
+
     /* ---------- Prices + Stripe ---------- */
-    ['pack12', 'pack24'].forEach(function (key) {
+    (shopOpen ? ['pack12', 'pack24'] : []).forEach(function (key) {
       var p = (C.packs || {})[key] || {};
       var priceEl = $('[data-price="' + key + '"]');
       var btn = $('[data-buy="' + key + '"]');
@@ -781,7 +822,7 @@
 
     var delivery = $('[data-delivery]');
     if (C.shipping) { delivery.textContent = C.shipping; }
-    else { missing.push('zonas y plazos de envío'); }
+    else if (shopOpen) { missing.push('zonas y plazos de envío'); }
 
     /* ---------- Contact ---------- */
     var ig = $('[data-instagram]');
@@ -811,7 +852,7 @@
         a.appendChild(n); a.appendChild(ar); a.appendChild(go); li.appendChild(a); ul.appendChild(li);
       });
       ul.hidden = false;
-    } else { missing.push('puntos de venta'); }
+    }
 
     /* ---------- Founder ---------- */
     var f = C.founder || {};
