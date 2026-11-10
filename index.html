@@ -332,7 +332,11 @@
     .pack__spec { color: var(--green); }
     .pack__desc { max-width: 32ch; }
     .pack__foot { margin-top: auto; padding-top: 18px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; border-top: 1px solid rgba(0,116,75,.25); }
-    .pack__price { font-family: var(--display); font-weight: 700; font-size: 34px; color: var(--green); }
+    .pack__price { font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1; color: var(--green); }
+    .pack__unit { display: block; margin-top: 6px; font-family: var(--display); font-weight: 500; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: rgba(13,42,31,.7); }
+    .pack__ship { font-family: var(--display); font-weight: 500; font-size: 14px; letter-spacing: .06em; color: var(--green); }
+    .pack__ship--free { display: inline-block; background: var(--bright); color: var(--ink); padding: 3px 10px; border-radius: 999px; }
+    .pack__flag { position: absolute; right: 16px; top: 16px; background: var(--blue); color: var(--paper); padding: 8px 12px; transform: rotate(3deg); }
     .pack__note { width: 100%; font-family: var(--display); font-size: 13px; letter-spacing: .04em; color: rgba(13,42,31,.7); }
     .shop__info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; font-size: 18px; }
     .shop__info div { display: flex; gap: 12px; align-items: flex-start; }
@@ -567,9 +571,9 @@
               <p class="pack__spec label">8 latas de ADUGA · 330 ml cada una.</p>
               <p class="pack__desc">Perfecto para probar, repetir o tener unas cuantas frías en la nevera.</p>
               <div class="pack__foot">
-                <span class="pack__price" data-price="pack8">—</span>
+                <div><span class="pack__price" data-price="pack8">—</span><span class="pack__unit" data-unit="pack8"></span></div>
                 <a class="btn" data-buy="pack8" href="#comprar" target="_blank" rel="noopener">Comprar pack de 8 <span class="arrow" aria-hidden="true">→</span></a>
-                <p class="pack__note" data-shipping></p>
+                <p class="pack__note"><span class="pack__ship" data-ship="pack8"></span></p>
               </div>
             </div>
           </article>
@@ -577,6 +581,7 @@
           <article class="pack pack--12 reveal" data-d="1" aria-labelledby="p12-name">
             <div class="pack__visual" aria-hidden="true">
               <span class="pack__count">12<small>latas</small></span>
+              <span class="pack__flag label" data-flag="pack12" hidden></span>
               <div class="cans" data-cans="12"></div>
             </div>
             <div class="pack__body">
@@ -584,9 +589,9 @@
               <p class="pack__spec label">12 latas de ADUGA · 330 ml cada una.</p>
               <p class="pack__desc">Para los que ya saben que ocho no van a ser suficientes.</p>
               <div class="pack__foot">
-                <span class="pack__price" data-price="pack12">—</span>
+                <div><span class="pack__price" data-price="pack12">—</span><span class="pack__unit" data-unit="pack12"></span></div>
                 <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener">Comprar pack de 12 <span class="arrow" aria-hidden="true">→</span></a>
-                <p class="pack__note" data-shipping></p>
+                <p class="pack__note"><span class="pack__ship" data-ship="pack12"></span></p>
               </div>
             </div>
           </article>
@@ -594,7 +599,7 @@
 
         <div class="shop__info reveal">
           <div><span class="icon i-sol" aria-hidden="true"></span><p><strong>Pago seguro</strong>El pago se hace en la página segura de Stripe.</p></div>
-          <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envíos en España</strong>Consulta destinos, costes y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</p></div>
+          <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envío gratis desde 12 latas</strong><span data-delivery>Consulta destinos y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</span></p></div>
           <div><span class="icon i-cultivos" aria-hidden="true"></span><p><strong>Siempre en la nevera</strong>Lleva cultivos vivos: guárdala por debajo de 10 °C.</p></div>
         </div>
         <nav class="shop__legal" aria-label="Información de compra">
@@ -750,6 +755,16 @@
       var btn = $('[data-buy="' + key + '"]');
       if (p.price) { priceEl.textContent = p.price; }
       else { priceEl.textContent = 'Precio pendiente'; priceEl.classList.add('pending'); missing.push('precio ' + key.replace('pack', 'pack de ')); }
+      var unitEl = $('[data-unit="' + key + '"]');
+      unitEl.textContent = p.price ? 'IVA incl.' + (p.perCan ? ' · ' + p.perCan + ' / lata' : '') : '';
+      var shipEl = $('[data-ship="' + key + '"]');
+      if (p.shipping) {
+        shipEl.textContent = p.shipping;
+        if (/gratis/i.test(p.shipping)) {
+          shipEl.classList.add('pack__ship--free');
+          var flag = $('[data-flag="' + key + '"]'); if (flag) { flag.textContent = p.shipping; flag.hidden = false; }
+        }
+      } else { shipEl.textContent = 'Gastos de envío: pendiente de confirmar.'; shipEl.classList.add('pending'); }
       if (p.stripeLink && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(p.stripeLink)) {
         btn.href = p.stripeLink;
       } else {
@@ -759,11 +774,9 @@
       }
     });
 
-    $$('[data-shipping]').forEach(function (el) {
-      if (C.shipping) { el.textContent = C.shipping; }
-      else { el.textContent = 'Gastos y condiciones de envío: pendiente de confirmar.'; el.classList.add('pending'); }
-    });
-    if (!C.shipping) missing.push('envío');
+    var delivery = $('[data-delivery]');
+    if (C.shipping) { delivery.textContent = C.shipping; }
+    else { missing.push('zonas y plazos de envío'); }
 
     /* ---------- Contact ---------- */
     var ig = $('[data-instagram]');
