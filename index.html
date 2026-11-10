@@ -155,6 +155,8 @@
       position: fixed; inset: 0 0 auto 0; z-index: 50;
       height: var(--nav-h);
       color: var(--mint);
+      background: var(--green);
+      box-shadow: 0 1px 0 rgba(204,242,226,.18);
       transition: background .35s, color .35s, box-shadow .35s;
     }
     .nav.is-solid { background: var(--cream); color: var(--green); box-shadow: 0 1px 0 rgba(0,116,75,.15); }
@@ -200,7 +202,7 @@
       .nav__links a { font-size: clamp(34px, 10vw, 52px); font-weight: 700; letter-spacing: 0; line-height: 1; }
       .nav__buy { height: auto; padding: 14px 26px; margin-top: 10px; background: var(--mint) !important; color: var(--green) !important; }
       .menu-open .nav__links { opacity: 1; visibility: visible; }
-      .menu-open .nav { color: var(--mint); background: transparent; box-shadow: none; }
+      .menu-open .nav { color: var(--mint); background: var(--green); box-shadow: none; }
       .menu-open { overflow: hidden; }
     }
 
@@ -219,7 +221,6 @@
     .hero__text { margin-top: 28px; max-width: 30ch; }
     .hero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
     .hero__media { position: relative; min-height: 100%; }
-    .hero__media::after { content: ""; position: absolute; inset: 0 0 auto 0; height: 160px; background: linear-gradient(rgba(0,58,37,.55), rgba(0,58,37,0)); pointer-events: none; }
     .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; animation: heroIn 1.6s var(--ease) both; }
     @keyframes heroIn { from { transform: scale(1.06); opacity: .4; } to { transform: none; opacity: 1; } }
 
@@ -383,7 +384,7 @@
     .b2b__aside { display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; }
     .b2b__wa { font-family: var(--display); font-weight: 500; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
     .b2b__wa:hover { color: var(--paper); }
-    .b2b__aside .icon { font-size: clamp(160px, 16vw, 240px); color: var(--green); }
+    .b2b__mark { width: clamp(120px, 11vw, 168px); height: auto; }
     .form { display: none; margin-top: clamp(40px, 5vw, 64px); }
     .form.is-open { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; animation: fadeUp .6s var(--ease) both; }
     .field { display: flex; flex-direction: column; gap: 6px; }
@@ -401,7 +402,7 @@
     @media (max-width: 899px) {
       .b2b__grid { grid-template-columns: 1fr; align-items: start; }
       .b2b__aside { align-items: flex-start; text-align: left; }
-      .b2b__aside .icon { display: none; }
+      .b2b__mark { display: none; }
       .form.is-open { grid-template-columns: 1fr; }
     }
 
@@ -409,7 +410,7 @@
     .footer { background: var(--green); color: var(--mint); padding: clamp(64px, 8vw, 112px) 0 32px; }
     .footer__top { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 40px; }
     .footer__brand svg { width: min(300px, 70%); fill: currentColor; display: block; }
-    .footer__brand .icon { font-size: 96px; margin-bottom: 20px; display: block; }
+    .footer__mark { display: block; width: 80px; height: auto; margin-bottom: 22px; }
     .footer h4 { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--mint-2); margin-bottom: 14px; }
     .footer ul { list-style: none; display: grid; gap: 8px; }
     .footer ul a { text-decoration: none; font-size: 20px; }
@@ -486,7 +487,7 @@
     <!-- Etimología (de la guía de marca) -->
     <div class="etym" aria-label="Significado del nombre ADUGA">
       <div class="wrap etym__in">
-        <span class="etym__word">A<i>·</i>dug<i>·</i>ga</span>
+        <span class="etym__word">A<i>·</i>DUG<i>·</i>GA</span>
         <span class="etym__part"><b>A</b><em>bebida</em></span>
         <span class="etym__part"><b>dug</b><em>buena</em></span>
         <span class="etym__part"><b>ga</b><em>para ti</em></span>
@@ -666,7 +667,7 @@
             </div>
           </div>
           <div class="b2b__aside reveal" data-d="2">
-            <span class="icon i-ninkasi" aria-hidden="true"></span>
+            <img class="b2b__mark" src="assets/icons/ninkasi-vasija.svg" alt="" width="160" height="196">
             <button class="btn btn--ink" id="b2bOpen" aria-expanded="false" aria-controls="b2bForm">Hablemos <span class="arrow" aria-hidden="true">→</span></button>
             <a class="b2b__wa" data-whatsapp hidden href="#" target="_blank" rel="noopener">O escríbenos por WhatsApp</a>
           </div>
@@ -692,7 +693,7 @@
     <div class="wrap">
       <div class="footer__top">
         <div class="footer__brand">
-          <span class="icon i-ninkasi" aria-hidden="true"></span>
+          <img class="footer__mark" src="assets/icons/ninkasi-vasija-neg.svg" alt="" width="80" height="98">
           <svg viewBox="0 0 824 276" role="img" aria-label="ADUGA"><use href="#wordmark"/></svg>
         </div>
         <div>
