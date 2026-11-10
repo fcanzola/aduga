@@ -26,7 +26,7 @@ window.ADUGA = {
       price: "72,00 €",
       perCan: "3,00 €",
       shipping: "Envío gratis",
-      stripeLink: null,                 // ej. "https://buy.stripe.com/yyyyyyyy"
+      stripeLink: "https://buy.stripe.com/test_dRm7sK1zY5OY3UudsdcIE01",   // SANDBOX (test). Cambiar por el enlace live antes de lanzar
     },
   },
 
