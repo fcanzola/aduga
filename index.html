@@ -369,7 +369,12 @@
     .about h2 em { display: block; font-style: normal; }
     .about .prose { color: var(--ink); margin-top: 36px; max-width: 38ch; }
     .about__sign { margin-top: 28px; }
-    @media (max-width: 899px) { .about__grid { grid-template-columns: 1fr; } }
+    .about__eyebrow--mobile { display: none; }
+    @media (max-width: 899px) {
+      .about__grid { grid-template-columns: 1fr; row-gap: 28px; }
+      .about__eyebrow--mobile { display: flex; margin-bottom: -6px; }
+      .about__eyebrow { display: none; }
+    }
 
     /* 06 Dónde */
     .find { color: var(--green); }
@@ -647,11 +652,12 @@
     <!-- ================= 05 HISTORIA ================= -->
     <section class="sec about" id="historia" aria-labelledby="about-title">
       <div class="wrap about__grid">
+        <p class="eyebrow label about__eyebrow--mobile" aria-hidden="true">Sobre ADUGA</p>
         <figure class="about__media reveal">
           <img data-founder-photo src="assets/img/cocina-1100.webp?v=2" srcset="assets/img/cocina-700.webp?v=2 700w, assets/img/cocina-1100.webp?v=2 1100w" sizes="(min-width: 900px) 40vw, 100vw" width="1100" height="1586" loading="lazy" style="object-position: 50% 40%" alt="Una chica ríe en un mercado de flores, con dos latas de ADUGA en las manos.">
         </figure>
         <div>
-          <p class="eyebrow label reveal">Sobre ADUGA</p>
+          <p class="eyebrow label reveal about__eyebrow">Sobre ADUGA</p>
           <h2 class="reveal" id="about-title">Queríamos algo rico. <em>Y que además nos hiciera bien.</em></h2>
           <div class="prose lead reveal" data-d="1">
             <p>Así empezó ADUGA. Con las ganas de crear una bebida que realmente apeteciera tomar: refrescante, llena de sabor, hecha con buenos ingredientes y sin tener que elegir entre disfrutarla y cuidarse.</p>
