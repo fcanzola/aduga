@@ -13,19 +13,16 @@ window.ADUGA = {
 
   /* ---------- Tienda ---------- */
   packs: {
-    /* Precios con IVA incluido (ver doc "Pricing" del proyecto, nov. 2026).
-       Deben coincidir con los Payment Links de Stripe. */
-    pack8: {
-      price: "24,00 €",
-      perCan: "3,00 €",
-      shipping: "+ 4,90 € de envío",   // tarifa de envío en el Payment Link del pack de 8
-      stripeLink: null,                 // ej. "https://buy.stripe.com/xxxxxxxx"
-    },
+    /* Único formato online: pack de 12 latas. Precio con IVA incluido
+       (ver doc "Pricing" del proyecto). Debe coincidir con el Payment Link de Stripe.
+       El cliente elige cuántos packs en el checkout: activa
+       "Permitir que los clientes ajusten la cantidad" en el Payment Link. */
     pack12: {
       price: "34,00 €",
       perCan: "2,83 €",
-      shipping: "Envío gratis",         // sin tarifa de envío en el Payment Link del pack de 12
-      stripeLink: null,                 // ej. "https://buy.stripe.com/yyyyyyyy"
+      shipping: "Envío gratis",         // tarifa de envío 0,00 € en el Payment Link
+      multiple: true,                   // muestra "¿Más de un pack?" con 2, 3 y 4 packs
+      stripeLink: null,                 // ej. "https://buy.stripe.com/xxxxxxxx"
     },
   },
 

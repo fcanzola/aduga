@@ -318,8 +318,19 @@
     }
     .cans { display: grid; }
     .cans img { width: 100%; transition: transform .6s var(--ease); }
-    .pack--8 .cans { grid-template-columns: repeat(4, 1fr); width: 52%; gap: 3% 2%; }
-    .pack--12 .cans { grid-template-columns: repeat(6, 1fr); width: 64%; gap: 3% 1.6%; }
+    .pack--12 .cans { grid-template-columns: repeat(4, 1fr); width: 52%; gap: 3% 2.4%; }
+    .packs--solo { grid-template-columns: 1fr; }
+    .pack--solo { display: grid; grid-template-columns: 1.15fr 1fr; }
+    .pack--solo .pack__visual { aspect-ratio: auto; min-height: 460px; border-bottom: 0; border-right: 1.5px solid var(--green); }
+    .pack--solo .pack__body { padding: clamp(24px, 3.2vw, 48px); justify-content: center; }
+    .pack--solo .pack__name { font-size: clamp(36px, 3.6vw, 56px); }
+    .pack--solo .pack__price { font-size: clamp(36px, 3.4vw, 48px); }
+    .qty { margin-top: 4px; padding: 16px 18px; background: var(--cream); border: 1px dashed rgba(0,116,75,.4); }
+    .qty__title { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+    .qty__text { font-size: 17px; margin-top: 4px; }
+    .qty__list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .qty__list li { font-family: var(--display); font-size: 14px; letter-spacing: .04em; padding: 5px 12px; border: 1.5px solid var(--green); border-radius: 999px; color: var(--green); background: var(--paper); }
+    .qty__list b { font-weight: 700; }
     .pack:hover .cans img { transform: translateY(-6px); }
     .pack:hover .cans img:nth-child(odd) { transform: translateY(-10px) rotate(-3deg); }
     .pack__count {
@@ -345,7 +356,10 @@
     .shop__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(0,116,75,.25); }
     .shop__legal a { font-family: var(--display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
     @media (max-width: 899px) {
-      .packs, .shop__info { grid-template-columns: 1fr; }
+      .packs, .shop__info, .pack--solo { grid-template-columns: 1fr; }
+      .pack--solo .pack__visual { min-height: 0; aspect-ratio: 5 / 4; border-right: 0; border-bottom: 1.5px solid var(--green); }
+      .pack--solo .pack__flag { left: 14px; right: auto; top: 14px; transform: rotate(-3deg); }
+      .pack--solo .cans { width: 56%; }
     }
 
     /* 05 Historia */
@@ -560,25 +574,8 @@
           <p class="lead reveal" data-d="1">Tu dosis de ADUGA, directamente a casa.</p>
         </div>
 
-        <div class="packs">
-          <article class="pack pack--8 reveal" aria-labelledby="p8-name">
-            <div class="pack__visual" aria-hidden="true">
-              <span class="pack__count">8<small>latas</small></span>
-              <div class="cans" data-cans="8"></div>
-            </div>
-            <div class="pack__body">
-              <h3 class="pack__name" id="p8-name">Pack de 8</h3>
-              <p class="pack__spec label">8 latas de ADUGA · 330 ml cada una.</p>
-              <p class="pack__desc">Perfecto para probar, repetir o tener unas cuantas frías en la nevera.</p>
-              <div class="pack__foot">
-                <div><span class="pack__price" data-price="pack8">—</span><span class="pack__unit" data-unit="pack8"></span></div>
-                <a class="btn" data-buy="pack8" href="#comprar" target="_blank" rel="noopener">Comprar pack de 8 <span class="arrow" aria-hidden="true">→</span></a>
-                <p class="pack__note"><span class="pack__ship" data-ship="pack8"></span></p>
-              </div>
-            </div>
-          </article>
-
-          <article class="pack pack--12 reveal" data-d="1" aria-labelledby="p12-name">
+        <div class="packs packs--solo">
+          <article class="pack pack--12 pack--solo reveal" aria-labelledby="p12-name">
             <div class="pack__visual" aria-hidden="true">
               <span class="pack__count">12<small>latas</small></span>
               <span class="pack__flag label" data-flag="pack12" hidden></span>
@@ -587,11 +584,16 @@
             <div class="pack__body">
               <h3 class="pack__name" id="p12-name">Pack de 12</h3>
               <p class="pack__spec label">12 latas de ADUGA · 330 ml cada una.</p>
-              <p class="pack__desc">Para los que ya saben que ocho no van a ser suficientes.</p>
+              <p class="pack__desc">Perfecto para probar, repetir o tener unas cuantas frías en la nevera.</p>
               <div class="pack__foot">
                 <div><span class="pack__price" data-price="pack12">—</span><span class="pack__unit" data-unit="pack12"></span></div>
-                <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener">Comprar pack de 12 <span class="arrow" aria-hidden="true">→</span></a>
+                <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener">Comprar <span class="arrow" aria-hidden="true">→</span></a>
                 <p class="pack__note"><span class="pack__ship" data-ship="pack12"></span></p>
+              </div>
+              <div class="qty" data-qty hidden>
+                <p class="qty__title">¿Más de un pack?</p>
+                <p class="qty__text">Elige cuántos al pagar. El envío sigue siendo gratis.</p>
+                <ul class="qty__list" data-qty-list></ul>
               </div>
             </div>
           </article>
@@ -599,7 +601,7 @@
 
         <div class="shop__info reveal">
           <div><span class="icon i-sol" aria-hidden="true"></span><p><strong>Pago seguro</strong>El pago se hace en la página segura de Stripe.</p></div>
-          <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envío gratis desde 12 latas</strong><span data-delivery>Consulta destinos y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</span></p></div>
+          <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envío gratis</strong><span data-delivery>Consulta destinos y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</span></p></div>
           <div><span class="icon i-cultivos" aria-hidden="true"></span><p><strong>Siempre en la nevera</strong>Lleva cultivos vivos: guárdala por debajo de 10 °C.</p></div>
         </div>
         <nav class="shop__legal" aria-label="Información de compra">
@@ -749,7 +751,7 @@
     });
 
     /* ---------- Prices + Stripe ---------- */
-    ['pack8', 'pack12'].forEach(function (key) {
+    ['pack12'].forEach(function (key) {
       var p = (C.packs || {})[key] || {};
       var priceEl = $('[data-price="' + key + '"]');
       var btn = $('[data-buy="' + key + '"]');
@@ -770,7 +772,18 @@
       } else {
         btn.removeAttribute('href'); btn.removeAttribute('target');
         btn.setAttribute('aria-disabled', 'true'); btn.setAttribute('title', 'Enlace de pago pendiente');
-        missing.push('Stripe ' + key.replace('pack', 'pack de '));
+        missing.push('enlace de Stripe');
+      }
+      /* Varios packs: la cantidad se elige en el checkout de Stripe (Payment Link con cantidad ajustable). */
+      var qty = $('[data-qty]'), list = $('[data-qty-list]');
+      var n = p.price ? parseFloat(p.price.replace(/[^\d,]/g, '').replace(',', '.')) : NaN;
+      if (qty && p.multiple !== false && !isNaN(n)) {
+        [2, 3, 4].forEach(function (k) {
+          var li = document.createElement('li');
+          li.innerHTML = '<b>' + k + ' packs</b> · ' + (k * 12) + ' latas · ' + (n * k).toFixed(2).replace('.', ',') + ' €';
+          list.appendChild(li);
+        });
+        qty.hidden = false;
       }
     });
 
