@@ -277,6 +277,7 @@
     .traits .icon { font-size: 18px; color: var(--bright); transition: transform .6s var(--ease); }
     .traits li:hover .icon { transform: rotate(90deg); }
     .what__media { position: relative; }
+    .what__eyebrow--mobile { display: none; }
     .what__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
     .what__tag {
       position: absolute; right: -14px; top: 28px;
@@ -284,8 +285,10 @@
       padding: 10px 14px; transform: rotate(3deg);
     }
     @media (max-width: 899px) {
-      .what__grid { grid-template-columns: 1fr; }
+      .what__grid { grid-template-columns: 1fr; row-gap: 28px; }
       .what__media { order: -1; }
+      .what__eyebrow--mobile { display: flex; order: -2; margin-bottom: -6px; }
+      .what__eyebrow { display: none; }
       .what__tag { right: 10px; }
     }
 
@@ -514,8 +517,9 @@
     <!-- ================= 02 QUÉ ES ================= -->
     <section class="sec what" id="aduga" aria-labelledby="what-title">
       <div class="wrap what__grid">
+        <p class="eyebrow label what__eyebrow--mobile" aria-hidden="true">Qué es ADUGA</p>
         <div class="what__copy">
-          <p class="eyebrow label reveal">Qué es ADUGA</p>
+          <p class="eyebrow label reveal what__eyebrow">Qué es ADUGA</p>
           <h2 class="display h-lg reveal" id="what-title">Naturalmente refrescante.</h2>
           <div class="prose lead reveal" data-d="1">
             <p>ADUGA es una bebida de kéfir de agua artesanal, naturalmente fermentada y con cultivos vivos.</p>
