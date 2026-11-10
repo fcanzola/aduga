@@ -257,6 +257,7 @@
     /* ---------- Sections ---------- */
     .sec { padding: clamp(80px, 11vw, 168px) 0; }
     .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .eyebrow::before { content: ""; flex: none; width: 15px; height: 15px; background: currentColor; -webkit-mask: url("assets/icons/sol.svg") center / contain no-repeat; mask: url("assets/icons/sol.svg") center / contain no-repeat; }
 
     /* 02 Qué es */
     .what { color: var(--green); }
