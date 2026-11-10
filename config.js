@@ -18,8 +18,8 @@ window.ADUGA = {
        El cliente elige cuántos packs en el checkout: activa
        "Permitir que los clientes ajusten la cantidad" en el Payment Link. */
     pack12: {
-      price: "34,00 €",
-      perCan: "2,83 €",
+      price: "36,00 €",
+      perCan: "3,00 €",
       shipping: "Envío gratis",         // tarifa de envío 0,00 € en el Payment Link
       multiple: true,                   // muestra "¿Más de un pack?" con 2, 3 y 4 packs
       stripeLink: null,                 // ej. "https://buy.stripe.com/xxxxxxxx"
