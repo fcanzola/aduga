@@ -318,19 +318,8 @@
     }
     .cans { display: grid; }
     .cans img { width: 100%; transition: transform .6s var(--ease); }
-    .pack--12 .cans { grid-template-columns: repeat(4, 1fr); width: 52%; gap: 3% 2.4%; }
-    .packs--solo { grid-template-columns: 1fr; }
-    .pack--solo { display: grid; grid-template-columns: 1.15fr 1fr; }
-    .pack--solo .pack__visual { aspect-ratio: auto; min-height: 460px; border-bottom: 0; border-right: 1.5px solid var(--green); }
-    .pack--solo .pack__body { padding: clamp(24px, 3.2vw, 48px); justify-content: center; }
-    .pack--solo .pack__name { font-size: clamp(36px, 3.6vw, 56px); }
-    .pack--solo .pack__price { font-size: clamp(36px, 3.4vw, 48px); }
-    .qty { margin-top: 4px; padding: 16px 18px; background: var(--cream); border: 1px dashed rgba(0,116,75,.4); }
-    .qty__title { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
-    .qty__text { font-size: 17px; margin-top: 4px; }
-    .qty__list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .qty__list li { font-family: var(--display); font-size: 14px; letter-spacing: .04em; padding: 5px 12px; border: 1.5px solid var(--green); border-radius: 999px; color: var(--green); background: var(--paper); }
-    .qty__list b { font-weight: 700; }
+    .pack--12 .cans { grid-template-columns: repeat(4, 1fr); width: 46%; gap: 3% 2.4%; }
+    .pack--24 .cans { grid-template-columns: repeat(6, 1fr); width: 50%; gap: 1.6% 1.6%; }
     .pack:hover .cans img { transform: translateY(-6px); }
     .pack:hover .cans img:nth-child(odd) { transform: translateY(-10px) rotate(-3deg); }
     .pack__count {
@@ -356,10 +345,7 @@
     .shop__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(0,116,75,.25); }
     .shop__legal a { font-family: var(--display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
     @media (max-width: 899px) {
-      .packs, .shop__info, .pack--solo { grid-template-columns: 1fr; }
-      .pack--solo .pack__visual { min-height: 0; aspect-ratio: 5 / 4; border-right: 0; border-bottom: 1.5px solid var(--green); }
-      .pack--solo .pack__flag { left: 14px; right: auto; top: 14px; transform: rotate(-3deg); }
-      .pack--solo .cans { width: 56%; }
+      .packs, .shop__info { grid-template-columns: 1fr; }
     }
 
     /* 05 Historia */
@@ -574,11 +560,10 @@
           <p class="lead reveal" data-d="1">Tu dosis de ADUGA, directamente a casa.</p>
         </div>
 
-        <div class="packs packs--solo">
-          <article class="pack pack--12 pack--solo reveal" aria-labelledby="p12-name">
+        <div class="packs">
+          <article class="pack pack--12 reveal" aria-labelledby="p12-name">
             <div class="pack__visual" aria-hidden="true">
               <span class="pack__count">12<small>latas</small></span>
-              <span class="pack__flag label" data-flag="pack12" hidden></span>
               <div class="cans" data-cans="12"></div>
             </div>
             <div class="pack__body">
@@ -587,13 +572,25 @@
               <p class="pack__desc">Perfecto para probar, repetir o tener unas cuantas frías en la nevera.</p>
               <div class="pack__foot">
                 <div><span class="pack__price" data-price="pack12">—</span><span class="pack__unit" data-unit="pack12"></span></div>
-                <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener">Comprar <span class="arrow" aria-hidden="true">→</span></a>
+                <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener">Comprar pack de 12 <span class="arrow" aria-hidden="true">→</span></a>
                 <p class="pack__note"><span class="pack__ship" data-ship="pack12"></span></p>
               </div>
-              <div class="qty" data-qty hidden>
-                <p class="qty__title">¿Más de un pack?</p>
-                <p class="qty__text">Elige cuántos al pagar. El envío sigue siendo gratis.</p>
-                <ul class="qty__list" data-qty-list></ul>
+            </div>
+          </article>
+
+          <article class="pack pack--24 reveal" data-d="1" aria-labelledby="p24-name">
+            <div class="pack__visual" aria-hidden="true">
+              <span class="pack__count">24<small>latas</small></span>
+              <div class="cans" data-cans="24"></div>
+            </div>
+            <div class="pack__body">
+              <h3 class="pack__name" id="p24-name">Pack de 24</h3>
+              <p class="pack__spec label">24 latas de ADUGA · 330 ml cada una.</p>
+              <p class="pack__desc">Para los que ya saben que doce no van a ser suficientes. Todo en una sola caja.</p>
+              <div class="pack__foot">
+                <div><span class="pack__price" data-price="pack24">—</span><span class="pack__unit" data-unit="pack24"></span></div>
+                <a class="btn" data-buy="pack24" href="#comprar" target="_blank" rel="noopener">Comprar pack de 24 <span class="arrow" aria-hidden="true">→</span></a>
+                <p class="pack__note"><span class="pack__ship" data-ship="pack24"></span></p>
               </div>
             </div>
           </article>
@@ -751,7 +748,7 @@
     });
 
     /* ---------- Prices + Stripe ---------- */
-    ['pack12'].forEach(function (key) {
+    ['pack12', 'pack24'].forEach(function (key) {
       var p = (C.packs || {})[key] || {};
       var priceEl = $('[data-price="' + key + '"]');
       var btn = $('[data-buy="' + key + '"]');
@@ -772,18 +769,7 @@
       } else {
         btn.removeAttribute('href'); btn.removeAttribute('target');
         btn.setAttribute('aria-disabled', 'true'); btn.setAttribute('title', 'Enlace de pago pendiente');
-        missing.push('enlace de Stripe');
-      }
-      /* Varios packs: la cantidad se elige en el checkout de Stripe (Payment Link con cantidad ajustable). */
-      var qty = $('[data-qty]'), list = $('[data-qty-list]');
-      var n = p.price ? parseFloat(p.price.replace(/[^\d,]/g, '').replace(',', '.')) : NaN;
-      if (qty && p.multiple !== false && !isNaN(n)) {
-        [2, 3, 4].forEach(function (k) {
-          var li = document.createElement('li');
-          li.innerHTML = '<b>' + k + ' packs</b> · ' + (k * 12) + ' latas · ' + (n * k).toFixed(2).replace('.', ',') + ' €';
-          list.appendChild(li);
-        });
-        qty.hidden = false;
+        missing.push('Stripe ' + key.replace('pack', 'pack de '));
       }
     });
 
