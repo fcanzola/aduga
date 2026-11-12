@@ -313,7 +313,8 @@
 
     /* 04 Tienda */
     .shop__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; color: var(--green); }
-    .shop__head p { max-width: 24ch; }
+    .shop__head p { max-width: none; }
+    @media (min-width: 900px) { .shop__head p { white-space: nowrap; } }
     .packs { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(40px, 5vw, 72px); }
     .pack { background: var(--paper); border: 1.5px solid var(--green); display: flex; flex-direction: column; }
     .pack__visual {
