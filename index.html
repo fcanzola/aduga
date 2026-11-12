@@ -357,6 +357,7 @@
     .soon__title { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 3.6vw, 56px); line-height: .95; text-transform: uppercase; color: var(--green); }
     .soon__text { max-width: 36ch; }
     .soon__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    .soon__note { color: rgba(13,42,31,.65); }
     .shop__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(0,116,75,.25); }
     .shop__legal a { font-family: var(--display); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
     @media (max-width: 899px) {
@@ -588,17 +589,18 @@
 
         <div class="soon reveal" data-shop-closed>
           <div class="soon__visual" aria-hidden="true">
-            <span class="soon__tag label">Muy pronto</span>
+            <span class="soon__tag label">Pedidos por WhatsApp</span>
             <div class="cans" data-cans="12"></div>
           </div>
           <div class="soon__body">
-            <p class="eyebrow label">Tienda online</p>
-            <h3 class="soon__title">Estamos preparando la tienda online.</h3>
-            <p class="soon__text lead">Muy pronto podrás pedir tus latas de ADUGA y recibirlas en casa. Mientras tanto, encuéntranos por Madrid o escríbenos y te avisamos en cuanto abramos.</p>
+            <p class="eyebrow label">Haz tu pedido</p>
+            <h3 class="soon__title">¿Quieres ADUGA en casa? Escríbenos.</h3>
+            <p class="soon__text lead">Mientras terminamos la tienda online, puedes hacer tu pedido por WhatsApp o por email. Si estás en España, lo organizamos contigo.</p>
             <div class="soon__ctas">
-              <a class="btn" data-notify href="#contacto" target="_blank" rel="noopener">Avísame <span class="arrow" aria-hidden="true">→</span></a>
-              <a class="btn btn--ghost" href="#donde">Dónde encontrarnos</a>
+              <a class="btn" data-order href="#contacto" target="_blank" rel="noopener">Pedir por WhatsApp <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn btn--ghost" data-order-mail href="#contacto">Escribir un email</a>
             </div>
+            <p class="soon__note label">La tienda online abre muy pronto.</p>
           </div>
         </div>
 
@@ -681,12 +683,13 @@
           <h2 class="display h-lg reveal" id="find-title">ADUGA por Madrid.</h2>
           <div class="prose lead reveal" data-d="1">
             <p>Estamos empezando a llegar a nuevos rincones de Madrid.</p>
-            <p><span data-shop-open hidden>Descubre dónde puedes encontrarnos o pide tus latas directamente desde aquí.</span><span data-shop-closed>Descubre dónde puedes encontrarnos. Muy pronto, también online.</span></p>
+            <p><span data-shop-open hidden>Descubre dónde puedes encontrarnos o pide tus latas directamente desde aquí.</span><span data-shop-closed>Descubre dónde puedes encontrarnos. ¿No te pilla cerca? Escríbenos y organizamos tu pedido.</span></p>
           </div>
           <ul class="stores" id="stores" hidden></ul>
           <div class="find__ctas reveal" data-d="2">
             <a class="btn" href="#comprar" data-shop-open hidden>Comprar ADUGA <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="btn" href="#contacto">¿Tienes una tienda?</a>
+            <a class="btn" data-order data-shop-closed href="#contacto" target="_blank" rel="noopener">Pedir por WhatsApp <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#contacto">¿Tienes una tienda?</a>
           </div>
         </div>
         <figure class="find__media reveal" data-d="1">
@@ -776,7 +779,7 @@
 
   <div class="draft" id="draft" hidden role="status"></div>
 
-  <script src="config.js?v=20261110e"></script>
+  <script src="config.js?v=20261112a"></script>
   <script>
   (function () {
     var C = window.ADUGA || {};
@@ -799,12 +802,18 @@
     $$('[data-shop-open]').forEach(function (el) { el.hidden = !shopOpen; });
     $$('[data-shop-closed]').forEach(function (el) { el.hidden = shopOpen; });
     $$('[data-shop-label]').forEach(function (el) { var l = el.getAttribute('data-shop-label').split('|'); el.textContent = shopOpen ? l[0] : l[1]; });
-    var notify = $('[data-notify]');
-    if (notify) {
-      var waN = (C.whatsapp || '').replace(/[^\d]/g, '');
-      if (waN) notify.href = 'https://wa.me/' + waN + '?text=' + encodeURIComponent('¡Hola! Avisadme cuando abra la tienda online de ADUGA 🙌');
-      else if (C.email) { notify.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Avisadme cuando abra la tienda online'); notify.removeAttribute('target'); }
-    }
+    /* Pedidos directos mientras la tienda online está cerrada */
+    var waN = (C.whatsapp || '').replace(/[^\d]/g, '');
+    var orderMsg = '¡Hola! Me gustaría hacer un pedido de ADUGA.';
+    $$('[data-order]').forEach(function (a) {
+      if (waN) a.href = 'https://wa.me/' + waN + '?text=' + encodeURIComponent(orderMsg);
+      else if (C.email) { a.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Pedido ADUGA'); a.removeAttribute('target'); a.firstChild.textContent = 'Hacer un pedido '; }
+      else a.hidden = true;
+    });
+    $$('[data-order-mail]').forEach(function (a) {
+      if (C.email) a.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('Pedido ADUGA') + '&body=' + encodeURIComponent(orderMsg + '\n\nNombre:\nCiudad / código postal:\nCuántas latas:\n');
+      else a.hidden = true;
+    });
 
     /* ---------- Prices + Stripe ---------- */
     (shopOpen ? ['pack12', 'pack24'] : []).forEach(function (key) {
