@@ -52,6 +52,7 @@ window.ADUGA = {
      { name: "Nombre de la tienda", area: "Malasaña · C/ Ejemplo 12", mapsUrl: "https://maps.app.goo.gl/..." },
   */
   locations: [
+    { name: "Underground", area: "Cafetería de la EOI Jesús Maestro · C/ Jesús Maestro s/n, Chamberí", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Escuela+Oficial+de+Idiomas+Jes%C3%BAs+Maestro+Madrid" },
   ],
 
   /* ---------- Fundador/a (sección "Sobre ADUGA") ----------
