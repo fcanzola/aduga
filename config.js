@@ -53,6 +53,7 @@ window.ADUGA = {
   */
   locations: [
     { name: "Underground", area: "Cafetería de la EOI Jesús Maestro · C/ Jesús Maestro s/n, Chamberí", mapsUrl: "https://www.google.com/maps/search/?api=1&query=Escuela+Oficial+de+Idiomas+Jes%C3%BAs+Maestro+Madrid" },
+    { name: "BRUTA Café", area: "Salamanca · C/ del Conde de Peñalver, 62", mapsUrl: "https://www.google.com/maps/place//data=!4m2!3m1!1s0xd422916fc7fe909:0x9c1e7d5941302414" },
   ],
 
   /* ---------- Fundador/a (sección "Sobre ADUGA") ----------
