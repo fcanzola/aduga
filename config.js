@@ -12,32 +12,42 @@
 window.ADUGA = {
 
   /* ---------- Tienda ---------- */
-  /* false = tienda cerrada: se muestra "Estamos preparando la tienda online"
-     y se ocultan los packs y los botones de compra.
-     true  = tienda abierta con los packs y los enlaces de Stripe de abajo. */
-  shopOpen: false,
+  /* shopOpen: true  = se muestran los packs con precio.
+               false = bloque "¿Quieres ADUGA en casa? Escríbenos".
+     orderMode: "whatsapp" = cada botón abre WhatsApp con el pedido ya escrito.
+                "stripe"   = cada botón va a su Payment Link de Stripe. */
+  shopOpen: true,
+  orderMode: "whatsapp",
 
   packs: {
-    /* Dos formatos online: 12 y 24 latas, cada uno en una sola caja.
-       Precios con IVA incluido (ver doc "Pricing" del proyecto).
-       Cada pack tiene su propio Payment Link de Stripe, cantidad fija 1. */
+    /* Precios con IVA incluido, 3 €/lata (ver doc "Pricing" del proyecto). */
+    pack6: {
+      price: "18,00 €",
+      perCan: "3,00 €",
+      shipping: "+ 2 € de entrega · solo dentro de la M-30",
+      waMessage: "¡Hola! Quiero un pack de 6 latas de ADUGA (18 € + 2 € de entrega).\nMi dirección de entrega (dentro de la M-30) es: ",
+      stripeLink: null,
+    },
     pack12: {
       price: "36,00 €",
       perCan: "3,00 €",
-      shipping: "Envío gratis",         // tarifa de envío 0,00 € en el Payment Link
-      stripeLink: "https://buy.stripe.com/test_14A5kC0vU0uE0IidsdcIE00",   // SANDBOX (test). Cambiar por el enlace live antes de lanzar
+      shipping: "Envío gratis a toda España",
+      waMessage: "¡Hola! Quiero un pack de 12 latas de ADUGA (36 €, envío gratis).\nMi dirección de envío es: ",
+      stripeLink: "https://buy.stripe.com/test_14A5kC0vU0uE0IidsdcIE00",   // SANDBOX (test), solo con orderMode "stripe"
     },
     pack24: {
       price: "72,00 €",
       perCan: "3,00 €",
-      shipping: "Envío gratis",
-      stripeLink: "https://buy.stripe.com/test_dRm7sK1zY5OY3UudsdcIE01",   // SANDBOX (test). Cambiar por el enlace live antes de lanzar
+      shipping: "Envío gratis a toda España",
+      waMessage: "¡Hola! Quiero un pack de 24 latas de ADUGA (72 €, envío gratis).\nMi dirección de envío es: ",
+      stripeLink: "https://buy.stripe.com/test_dRm7sK1zY5OY3UudsdcIE01",   // SANDBOX (test), solo con orderMode "stripe"
     },
   },
 
   /* Zonas y plazos de entrega, se muestran ANTES de comprar.
      ej. "Enviamos a península en 48–72 h laborables." */
-  shipping: null,
+  shipping: "Pack de 6: entrega en mano dentro de la M-30. Packs de 12 y 24: envío gratis a toda España por Correos.",
+  payment: "Bizum o efectivo. En efectivo solo en entregas en mano en Madrid.",
 
   /* ---------- Contacto ---------- */
   email: "federica@aduga.co",

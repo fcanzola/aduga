@@ -324,7 +324,11 @@
     }
     .cans { display: grid; }
     .cans img { width: 100%; transition: transform .6s var(--ease); }
+    .pack--6 .cans { grid-template-columns: repeat(3, 1fr); width: 34%; gap: 3% 3%; }
     .pack--12 .cans { grid-template-columns: repeat(4, 1fr); width: 46%; gap: 3% 2.4%; }
+    .packs--3 { grid-template-columns: repeat(3, 1fr); }
+    .packs--3 .pack__foot { flex-direction: column; align-items: flex-start; }
+    .packs--3 .pack__foot .btn { width: 100%; }
     .pack--24 .cans { grid-template-columns: repeat(6, 1fr); width: 50%; gap: 1.6% 1.6%; }
     .pack:hover .cans img { transform: translateY(-6px); }
     .pack:hover .cans img:nth-child(odd) { transform: translateY(-10px) rotate(-3deg); }
@@ -584,7 +588,7 @@
             <p class="eyebrow label reveal">Tienda</p>
             <h2 class="display h-lg reveal" id="shop-title">Para compartir. O no.</h2>
           </div>
-          <p class="lead reveal" data-d="1"><span data-shop-open hidden>Tu dosis de ADUGA, directamente a casa.</span><span data-shop-closed>Muy pronto, ADUGA directamente a casa.</span></p>
+          <p class="lead reveal" data-d="1"><span data-shop-open hidden>Pide por WhatsApp y te lo llevamos a casa.</span><span data-shop-closed>Muy pronto, ADUGA directamente a casa.</span></p>
         </div>
 
         <div class="soon reveal" data-shop-closed>
@@ -605,8 +609,25 @@
         </div>
 
         <div data-shop-open hidden>
-        <div class="packs">
-          <article class="pack pack--12 reveal" aria-labelledby="p12-name">
+        <div class="packs packs--3">
+          <article class="pack pack--6 reveal" aria-labelledby="p6-name">
+            <div class="pack__visual" aria-hidden="true">
+              <span class="pack__count">6<small>latas</small></span>
+              <div class="cans" data-cans="6"></div>
+            </div>
+            <div class="pack__body">
+              <h3 class="pack__name" id="p6-name">Pack de 6</h3>
+              <p class="pack__spec label">6 latas de ADUGA · 330 ml cada una.</p>
+              <p class="pack__desc">Para probarla. Te lo llevamos a casa si estás dentro de la M-30.</p>
+              <div class="pack__foot">
+                <div><span class="pack__price" data-price="pack6">—</span><span class="pack__unit" data-unit="pack6"></span></div>
+                <a class="btn" data-buy="pack6" href="#comprar" target="_blank" rel="noopener"><span data-buy-label>Pedir pack de 6</span> <span class="arrow" aria-hidden="true">→</span></a>
+                <p class="pack__note"><span class="pack__ship" data-ship="pack6"></span></p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pack pack--12 reveal" data-d="1" aria-labelledby="p12-name">
             <div class="pack__visual" aria-hidden="true">
               <span class="pack__count">12<small>latas</small></span>
               <div class="cans" data-cans="12"></div>
@@ -614,16 +635,16 @@
             <div class="pack__body">
               <h3 class="pack__name" id="p12-name">Pack de 12</h3>
               <p class="pack__spec label">12 latas de ADUGA · 330 ml cada una.</p>
-              <p class="pack__desc">Perfecto para probar, repetir o tener unas cuantas frías en la nevera.</p>
+              <p class="pack__desc">Para tener siempre unas cuantas frías en la nevera.</p>
               <div class="pack__foot">
                 <div><span class="pack__price" data-price="pack12">—</span><span class="pack__unit" data-unit="pack12"></span></div>
-                <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener">Comprar pack de 12 <span class="arrow" aria-hidden="true">→</span></a>
+                <a class="btn" data-buy="pack12" href="#comprar" target="_blank" rel="noopener"><span data-buy-label>Pedir pack de 12</span> <span class="arrow" aria-hidden="true">→</span></a>
                 <p class="pack__note"><span class="pack__ship" data-ship="pack12"></span></p>
               </div>
             </div>
           </article>
 
-          <article class="pack pack--24 reveal" data-d="1" aria-labelledby="p24-name">
+          <article class="pack pack--24 reveal" data-d="2" aria-labelledby="p24-name">
             <div class="pack__visual" aria-hidden="true">
               <span class="pack__count">24<small>latas</small></span>
               <div class="cans" data-cans="24"></div>
@@ -634,7 +655,7 @@
               <p class="pack__desc">Para los que ya saben que doce no van a ser suficientes. Todo en una sola caja.</p>
               <div class="pack__foot">
                 <div><span class="pack__price" data-price="pack24">—</span><span class="pack__unit" data-unit="pack24"></span></div>
-                <a class="btn" data-buy="pack24" href="#comprar" target="_blank" rel="noopener">Comprar pack de 24 <span class="arrow" aria-hidden="true">→</span></a>
+                <a class="btn" data-buy="pack24" href="#comprar" target="_blank" rel="noopener"><span data-buy-label>Pedir pack de 24</span> <span class="arrow" aria-hidden="true">→</span></a>
                 <p class="pack__note"><span class="pack__ship" data-ship="pack24"></span></p>
               </div>
             </div>
@@ -642,8 +663,8 @@
         </div>
 
         <div class="shop__info reveal">
-          <div><span class="icon i-sol" aria-hidden="true"></span><p><strong>Pago seguro</strong>El pago se hace en la página segura de Stripe.</p></div>
-          <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envío gratis</strong><span data-delivery>Consulta destinos y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</span></p></div>
+          <div><span class="icon i-sol" aria-hidden="true"></span><p><strong data-pay-title>Pago seguro</strong><span data-pay>El pago se hace en la página segura de Stripe.</span></p></div>
+          <div><span class="icon i-flor" aria-hidden="true"></span><p><strong>Envíos</strong><span data-delivery>Consulta destinos y plazos en las <a href="legal.html#envios">condiciones de envío</a>.</span></p></div>
           <div><span class="icon i-cultivos" aria-hidden="true"></span><p><strong>Recomendable en la nevera</strong>Lleva cultivos vivos: te recomendamos guardarla por debajo de 10 °C.</p></div>
         </div>
         <nav class="shop__legal" aria-label="Información de compra">
@@ -779,7 +800,7 @@
 
   <div class="draft" id="draft" hidden role="status"></div>
 
-  <script src="config.js?v=20261112a"></script>
+  <script src="config.js?v=20261118a"></script>
   <script>
   (function () {
     var C = window.ADUGA || {};
@@ -816,7 +837,9 @@
     });
 
     /* ---------- Prices + Stripe ---------- */
-    (shopOpen ? ['pack12', 'pack24'] : []).forEach(function (key) {
+    var waMode = (C.orderMode || 'whatsapp') === 'whatsapp';
+    var waNum = (C.whatsapp || '').replace(/[^\d]/g, '');
+    (shopOpen ? ['pack6', 'pack12', 'pack24'] : []).forEach(function (key) {
       var p = (C.packs || {})[key] || {};
       var priceEl = $('[data-price="' + key + '"]');
       var btn = $('[data-buy="' + key + '"]');
@@ -832,8 +855,11 @@
           var flag = $('[data-flag="' + key + '"]'); if (flag) { flag.textContent = p.shipping; flag.hidden = false; }
         }
       } else { shipEl.textContent = 'Gastos de envío: pendiente de confirmar.'; shipEl.classList.add('pending'); }
-      if (p.stripeLink && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(p.stripeLink)) {
+      if (waMode && waNum) {
+        btn.href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent(p.waMessage || ('¡Hola! Quiero un ' + key.replace('pack', 'pack de ') + ' latas de ADUGA.'));
+      } else if (!waMode && p.stripeLink && /^https:\/\/(buy|checkout)\.stripe\.com\//.test(p.stripeLink)) {
         btn.href = p.stripeLink;
+        var bl = $('[data-buy-label]', btn); if (bl) bl.textContent = bl.textContent.replace('Pedir', 'Comprar');
       } else {
         btn.removeAttribute('href'); btn.removeAttribute('target');
         btn.setAttribute('aria-disabled', 'true'); btn.setAttribute('title', 'Enlace de pago pendiente');
@@ -841,6 +867,10 @@
       }
     });
 
+    if (shopOpen && waMode) {
+      $('[data-pay-title]').textContent = 'Pago';
+      $('[data-pay]').textContent = C.payment || 'Bizum o efectivo.';
+    }
     var delivery = $('[data-delivery]');
     if (C.shipping) { delivery.textContent = C.shipping; }
     else if (shopOpen) { missing.push('zonas y plazos de envío'); }
