@@ -31,14 +31,14 @@ window.ADUGA = {
     pack12: {
       price: "36,00 €",
       perCan: "3,00 €",
-      shipping: "Envío gratis a toda España",
+      shipping: "Envío gratis a toda la península",
       waMessage: "¡Hola! Quiero un pack de 12 latas de ADUGA (36 €, envío gratis).\nMi dirección de envío es: ",
       stripeLink: "https://buy.stripe.com/test_14A5kC0vU0uE0IidsdcIE00",   // SANDBOX (test), solo con orderMode "stripe"
     },
     pack24: {
       price: "72,00 €",
       perCan: "3,00 €",
-      shipping: "Envío gratis a toda España",
+      shipping: "Envío gratis a toda la península",
       waMessage: "¡Hola! Quiero un pack de 24 latas de ADUGA (72 €, envío gratis).\nMi dirección de envío es: ",
       stripeLink: "https://buy.stripe.com/test_dRm7sK1zY5OY3UudsdcIE01",   // SANDBOX (test), solo con orderMode "stripe"
     },
@@ -46,7 +46,7 @@ window.ADUGA = {
 
   /* Zonas y plazos de entrega, se muestran ANTES de comprar.
      ej. "Enviamos a península en 48–72 h laborables." */
-  shipping: "Pack de 6: entrega en mano dentro de la M-30. Packs de 12 y 24: envío gratis a toda España por Correos.",
+  shipping: "Pack de 6: entrega en mano dentro de la M-30. Packs de 12 y 24: envío gratis a toda la península por Correos (no enviamos a Baleares, Canarias, Ceuta ni Melilla).",
   payment: "Bizum o efectivo. En efectivo solo en entregas en mano en Madrid.",
 
   /* ---------- Contacto ---------- */
