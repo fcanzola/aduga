@@ -25,21 +25,21 @@ window.ADUGA = {
       price: "18,00 €",
       perCan: "3,00 €",
       shipping: "+ 2 € de entrega · solo dentro de la M-30",
-      waMessage: "¡Hola! Quiero un pack de 6 latas de ADUGA (18 € + 2 € de entrega).\nMi dirección de entrega (dentro de la M-30) es: ",
+      waMessage: "¡Hola! Quiero un pack de 6 latas de ADUGA (18 € + 2 € de entrega).\n\nNombre: \nDirección de entrega (dentro de la M-30): ",
       stripeLink: null,
     },
     pack12: {
       price: "36,00 €",
       perCan: "3,00 €",
       shipping: "Envío gratis a toda la península",
-      waMessage: "¡Hola! Quiero un pack de 12 latas de ADUGA (36 €, envío gratis).\nMi dirección de envío es: ",
+      waMessage: "¡Hola! Quiero un pack de 12 latas de ADUGA (36 €, envío gratis).\n\nNombre y apellidos: \nDirección (calle, número, piso, código postal y ciudad): \nEmail: ",
       stripeLink: "https://buy.stripe.com/test_14A5kC0vU0uE0IidsdcIE00",   // SANDBOX (test), solo con orderMode "stripe"
     },
     pack24: {
       price: "72,00 €",
       perCan: "3,00 €",
       shipping: "Envío gratis a toda la península",
-      waMessage: "¡Hola! Quiero un pack de 24 latas de ADUGA (72 €, envío gratis).\nMi dirección de envío es: ",
+      waMessage: "¡Hola! Quiero un pack de 24 latas de ADUGA (72 €, envío gratis).\n\nNombre y apellidos: \nDirección (calle, número, piso, código postal y ciudad): \nEmail: ",
       stripeLink: "https://buy.stripe.com/test_dRm7sK1zY5OY3UudsdcIE01",   // SANDBOX (test), solo con orderMode "stripe"
     },
   },
