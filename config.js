@@ -46,7 +46,7 @@ window.ADUGA = {
 
   /* Zonas y plazos de entrega, se muestran ANTES de comprar.
      ej. "Enviamos a península en 48–72 h laborables." */
-  shipping: "Pack de 6: entrega en mano dentro de la M-30. Packs de 12 y 24: envío gratis a toda la península por Correos (no enviamos a Baleares, Canarias, Ceuta ni Melilla).",
+  shipping: "Pack de 6: entrega en mano dentro de la M-30. Packs de 12 y 24: envío gratis a toda la península por Correos (por ahora, no enviamos a Baleares, Canarias, Ceuta ni Melilla).",
   payment: "Bizum o efectivo. En efectivo solo en entregas en mano en Madrid.",
 
   /* ---------- Contacto ---------- */
