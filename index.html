@@ -992,7 +992,7 @@
             say('is-ok', '¡Gracias! Hemos recibido tu mensaje. Te escribimos muy pronto.');
           } else { throw new Error(res.j && res.j.message || 'error'); }
         })
-        .catch(function () { say('is-error', 'No hemos podido enviar el mensaje.' + fallback); })
+        .catch(function (err) { if (window.console) console.warn('Formulario B2B:', err && err.message); say('is-error', 'No hemos podido enviar el mensaje.' + fallback); })
         .finally(function () { send.disabled = false; send.removeAttribute('aria-busy'); });
     });
 
