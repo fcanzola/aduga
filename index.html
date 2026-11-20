@@ -424,6 +424,14 @@
     .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--paper); }
     .form__foot { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 8px; }
     .form__foot p { font-size: 16px; max-width: 52ch; }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(13,42,31,.55); }
+    .form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .form__status { width: 100%; max-width: none !important; font-family: var(--display); font-weight: 500; font-size: 15px !important; letter-spacing: .04em; }
+    .form__status:empty { display: none; }
+    .form__status.is-ok { color: var(--ink); background: var(--paper); padding: 12px 16px; }
+    .form__status.is-error { color: var(--paper); background: var(--ink); padding: 12px 16px; }
+    .form__status a { color: inherit; }
+    .field input:-webkit-autofill, .field textarea:-webkit-autofill { -webkit-box-shadow: 0 0 0 1000px var(--bright) inset; -webkit-text-fill-color: var(--ink); }
     @media (max-width: 899px) {
       .b2b__grid { grid-template-columns: 1fr; align-items: start; }
       .b2b__aside { align-items: flex-start; text-align: left; }
@@ -744,9 +752,11 @@
           <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
           <div class="field"><label for="f-ciudad">Ciudad</label><input id="f-ciudad" name="ciudad" autocomplete="address-level2"></div>
           <div class="field field--full"><label for="f-mensaje">Mensaje</label><textarea id="f-mensaje" name="mensaje" placeholder="Cuéntanos sobre tu espacio"></textarea></div>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form__hp">
           <div class="form__foot">
-            <button class="btn btn--ink" type="submit">Enviar <span class="arrow" aria-hidden="true">→</span></button>
-            <p>Al enviar se abrirá tu correo con el mensaje listo. Esta web no guarda tus datos. Más info en nuestra <a href="legal.html#privacidad">política de privacidad</a>.</p>
+            <button class="btn btn--ink" type="submit" id="b2bSend">Enviar <span class="arrow" aria-hidden="true">→</span></button>
+            <p>Tu mensaje nos llega por email y te respondemos lo antes posible. Esta web no guarda tus datos. Más info en nuestra <a href="legal.html#privacidad">política de privacidad</a>.</p>
+            <p class="form__status" id="b2bStatus" role="status" aria-live="polite"></p>
           </div>
         </form>
       </div>
@@ -948,15 +958,39 @@
       open.setAttribute('aria-expanded', isOpen);
       if (isOpen) $('#f-nombre').focus();
     });
+    /* Envío directo al email de ADUGA con FormSubmit (formsubmit.co), sin abrir el correo del visitante */
+    var status = $('#b2bStatus'), send = $('#b2bSend');
+    function say(cls, html) { status.className = 'form__status ' + cls; status.innerHTML = html; }
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var v = function (n) { return (form.elements[n].value || '').trim(); };
+      if (v('_honey')) return;
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email')) || !v('nombre')) {
+        say('is-error', 'Necesitamos al menos tu nombre y un email válido para poder responderte.');
+        return;
+      }
       var subject = 'Quiero vender ADUGA' + (v('empresa') ? ' — ' + v('empresa') : '');
-      var body = [
-        'Nombre: ' + v('nombre'), 'Empresa: ' + v('empresa'),
-        'Email: ' + v('email'), 'Ciudad: ' + v('ciudad'), '', v('mensaje')
-      ].join('\n');
-      window.location.href = 'mailto:' + (C.email || '') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var waN = (C.whatsapp || '').replace(/[^\d]/g, '');
+      var waText = 'Hola, soy ' + v('nombre') + (v('empresa') ? ' de ' + v('empresa') : '') + (v('ciudad') ? ' (' + v('ciudad') + ')' : '') + '. ' + v('mensaje');
+      var fallback = waN ? ' Escríbenos por <a href="https://wa.me/' + waN + '?text=' + encodeURIComponent(waText) + '" target="_blank" rel="noopener">WhatsApp</a>' + (C.email ? ' o a <a href="mailto:' + C.email + '">' + C.email + '</a>' : '') + '.' : '';
+      send.disabled = true; send.setAttribute('aria-busy', 'true');
+      say('', 'Enviando…');
+      fetch('https://formsubmit.co/ajax/' + C.email, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          Nombre: v('nombre'), Empresa: v('empresa'), email: v('email'), Ciudad: v('ciudad'), Mensaje: v('mensaje'),
+          _subject: subject, _template: 'table', _captcha: 'false'
+        })
+      }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok && String(res.j.success) === 'true') {
+            form.reset();
+            say('is-ok', '¡Gracias! Hemos recibido tu mensaje. Te escribimos muy pronto.');
+          } else { throw new Error(res.j && res.j.message || 'error'); }
+        })
+        .catch(function () { say('is-error', 'No hemos podido enviar el mensaje.' + fallback); })
+        .finally(function () { send.disabled = false; send.removeAttribute('aria-busy'); });
     });
 
     $('#year').textContent = new Date().getFullYear();
